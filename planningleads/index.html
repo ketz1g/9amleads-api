@@ -1,0 +1,311 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Planning Leads — Daily Planning Application Alerts For UK Professionals</title>
+<meta name="description" content="Get daily planning application alerts for your target areas. Every planning permission means potential work for architects, builders, surveyors, and estate agents.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+:root{--clr-primary:#10b981;--clr-primary-hover:#059669;--clr-primary-subtle:rgba(16,185,129,0.12);--clr-primary-glow:rgba(16,185,129,0.35);--clr-bg:#000000;--clr-bg-alt:#050505;--clr-card:#0a0a0a;--clr-card-hover:#111111;--clr-border:#1a1a1a;--clr-border-light:#2a2a2a;--clr-text:#ffffff;--clr-text-secondary:#cccccc;--clr-muted:#888888;--clr-muted-dark:#555555;--clr-success:#22c55e;--clr-warning:#f59e0b;--clr-error:#ef4444;--clr-info:#3b82f6;--clr-glass:rgba(255,255,255,0.04);--clr-glass-border:rgba(255,255,255,0.08);--clr-glass-hover:rgba(255,255,255,0.07);--ff-heading:'Outfit',sans-serif;--ff-body:'Inter',sans-serif;--fs-xs:0.75rem;--fs-sm:0.875rem;--fs-base:1rem;--fs-lg:1.125rem;--fs-xl:1.25rem;--fs-2xl:1.5rem;--fs-3xl:2rem;--fs-4xl:2.5rem;--fs-5xl:3.25rem;--fs-6xl:4.5rem;--space-xs:0.25rem;--space-sm:0.5rem;--space-md:1rem;--space-lg:1.5rem;--space-xl:2rem;--space-2xl:3rem;--space-3xl:4rem;--space-4xl:6rem;--max-width:1200px;--nav-height:72px;--radius-sm:6px;--radius-md:10px;--radius-lg:16px;--radius-xl:24px;--radius-full:9999px;--shadow-sm:0 1px 3px rgba(0,0,0,0.4);--shadow-md:0 4px 14px rgba(0,0,0,0.5);--shadow-lg:0 10px 40px rgba(0,0,0,0.6);--shadow-xl:0 20px 60px rgba(0,0,0,0.7);--shadow-primary:0 0 30px rgba(16,185,129,0.25);--transition-fast:200ms cubic-bezier(0.4,0,0.2,1);--transition-base:350ms cubic-bezier(0.4,0,0.2,1);--transition-slow:500ms cubic-bezier(0.4,0,0.2,1);--z-nav:200;--z-cookie:700;--z-whatsapp:800}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;font-size:16px}
+body{font-family:var(--ff-body);font-size:var(--fs-base);color:var(--clr-text);background:var(--clr-bg);-webkit-font-smoothing:antialiased;overflow-x:hidden;min-height:100vh}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+h1,h2,h3,h4,h5,h6{font-family:var(--ff-heading);font-weight:700;line-height:1.1;color:var(--clr-text)}
+p{color:var(--clr-text-secondary);line-height:1.7}
+::selection{background:var(--clr-primary);color:#fff}
+.container{width:100%;max-width:var(--max-width);margin:0 auto;padding:0 var(--space-xl)}
+.section{padding:var(--space-4xl) 0}
+.section-label{display:inline-block;font-family:var(--ff-heading);font-size:var(--fs-sm);font-weight:600;text-transform:uppercase;letter-spacing:3px;color:var(--clr-primary);margin-bottom:var(--space-md)}
+.section-title{font-size:var(--fs-3xl);font-weight:800;margin-bottom:var(--space-lg)}
+.section-subtitle{font-size:var(--fs-lg);color:var(--clr-muted);max-width:600px}
+.section-header{text-align:center;margin-bottom:var(--space-3xl)}
+.section-header .section-subtitle{margin:0 auto}
+
+/* Nav */
+.nav{position:fixed;top:0;left:0;width:100%;height:var(--nav-height);z-index:var(--z-nav);background:rgba(0,0,0,0.6);backdrop-filter:blur(20px) saturate(1.4);-webkit-backdrop-filter:blur(20px) saturate(1.4);border-bottom:1px solid var(--clr-glass-border);transition:background var(--transition-base)}
+.nav.scrolled{background:rgba(0,0,0,0.92);box-shadow:0 1px 20px rgba(0,0,0,0.5)}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;height:100%;max-width:var(--max-width);margin:0 auto;padding:0 var(--space-xl)}
+.nav-logo{display:flex;align-items:center;gap:var(--space-sm);font-family:var(--ff-heading);font-size:var(--fs-xl);font-weight:900;letter-spacing:-0.5px}
+.nav-logo span{color:var(--clr-primary)}
+.nav-links{display:flex;align-items:center;gap:var(--space-2xl)}
+.nav-links a{font-size:var(--fs-sm);font-weight:500;color:var(--clr-text-secondary);transition:color var(--transition-fast);position:relative}
+.nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:2px;background:var(--clr-primary);transition:width var(--transition-base)}
+.nav-links a:hover{color:var(--clr-text)}
+.nav-links a:hover::after{width:100%}
+.nav-actions{display:flex;align-items:center;gap:var(--space-md)}
+.nav-hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px}
+.nav-hamburger span{display:block;width:24px;height:2px;background:var(--clr-text);border-radius:2px;transition:var(--transition-base);transform-origin:center}
+.nav-hamburger.active span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.nav-hamburger.active span:nth-child(2){opacity:0;transform:scaleX(0)}
+.nav-hamburger.active span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+
+/* Hero */
+.hero{position:relative;min-height:90vh;display:flex;align-items:center;justify-content:center;overflow:hidden;padding-top:var(--nav-height)}
+.hero-overlay{position:absolute;inset:0;z-index:1;background:linear-gradient(135deg,rgba(0,0,0,0.92) 0%,rgba(0,0,0,0.6) 50%,rgba(0,0,0,0.3) 100%),radial-gradient(ellipse at 30% 50%,rgba(16,185,129,0.08) 0%,transparent 60%)}
+.hero-grid-lines{position:absolute;inset:0;z-index:1;background-image:linear-gradient(rgba(16,185,129,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(16,185,129,0.03) 1px,transparent 1px);background-size:60px 60px}
+.hero-content{position:relative;z-index:2;text-align:center;max-width:850px;padding:0 var(--space-xl)}
+.hero-badge{display:inline-flex;align-items:center;gap:var(--space-sm);padding:var(--space-sm) var(--space-lg);background:var(--clr-glass);border:1px solid var(--clr-glass-border);border-radius:var(--radius-full);font-size:var(--fs-sm);font-weight:500;color:var(--clr-muted);margin-bottom:var(--space-xl);backdrop-filter:blur(10px)}
+.hero-badge .badge-dot{width:6px;height:6px;background:var(--clr-success);border-radius:50%;animation:glow-pulse 2s ease-in-out infinite;display:inline-block;margin-right:6px}
+.hero-title{font-size:var(--fs-5xl);font-weight:900;line-height:1.1;margin-bottom:var(--space-lg);letter-spacing:-1.5px}
+.hero-title .highlight{background:linear-gradient(135deg,var(--clr-primary),#34d399);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.hero-subtitle{font-size:var(--fs-lg);color:var(--clr-muted);max-width:600px;margin:0 auto var(--space-2xl);line-height:1.7}
+.hero-actions{display:flex;align-items:center;justify-content:center;gap:var(--space-md);flex-wrap:wrap}
+.hero-stats{display:flex;justify-content:center;gap:var(--space-3xl);margin-top:var(--space-4xl);padding-top:var(--space-3xl);border-top:1px solid var(--clr-border);flex-wrap:wrap}
+.hero-stat-value{font-family:var(--ff-heading);font-size:var(--fs-2xl);font-weight:800;color:var(--clr-text)}
+.hero-stat-label{font-size:var(--fs-sm);color:var(--clr-muted);margin-top:var(--space-xs)}
+
+/* Buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:var(--space-sm);padding:12px 28px;font-family:var(--ff-body);font-size:var(--fs-sm);font-weight:600;border:2px solid transparent;border-radius:var(--radius-md);cursor:pointer;transition:all var(--transition-base);text-align:center;white-space:nowrap}
+.btn:active{transform:scale(0.97)}
+.btn-primary{background:var(--clr-primary);color:#fff;border-color:var(--clr-primary)}
+.btn-primary:hover{background:var(--clr-primary-hover);border-color:var(--clr-primary-hover);box-shadow:var(--shadow-primary);transform:translateY(-2px)}
+.btn-secondary{background:transparent;color:var(--clr-text);border-color:var(--clr-border-light)}
+.btn-secondary:hover{border-color:var(--clr-text-secondary);background:var(--clr-glass);transform:translateY(-2px)}
+.btn-outline-primary{background:transparent;color:var(--clr-primary);border-color:var(--clr-primary)}
+.btn-outline-primary:hover{background:var(--clr-primary);color:#fff;box-shadow:var(--shadow-primary);transform:translateY(-2px)}
+.btn-lg{padding:16px 36px;font-size:var(--fs-base)}
+
+/* Cards */
+.steps-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--space-xl);counter-reset:step}
+.step-card{position:relative;text-align:center;padding:var(--space-2xl);background:var(--clr-card);border:1px solid var(--clr-border);border-radius:var(--radius-lg);transition:all var(--transition-base)}
+.step-card:hover{background:var(--clr-card-hover);border-color:var(--clr-border-light);transform:translateY(-4px);box-shadow:var(--shadow-lg)}
+.step-number{font-family:var(--ff-heading);font-size:var(--fs-5xl);font-weight:900;color:var(--clr-primary-subtle);line-height:1;position:absolute;top:var(--space-lg);right:var(--space-lg);transition:color var(--transition-fast)}
+.step-card:hover .step-number{color:var(--clr-primary-glow)}
+.step-icon{width:64px;height:64px;margin:0 auto var(--space-lg);background:var(--clr-primary-subtle);border-radius:var(--radius-md);display:flex;align-items:center;justify-content:center;font-size:1.5rem;transition:all var(--transition-base)}
+.step-card:hover .step-icon{background:var(--clr-primary);transform:scale(1.05);box-shadow:var(--shadow-primary)}
+.step-card h3{font-size:var(--fs-xl);margin-bottom:var(--space-sm)}
+.step-card p{font-size:var(--fs-sm);color:var(--clr-muted);line-height:1.7}
+
+.features-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--space-lg)}
+.feature-card{padding:var(--space-2xl);background:var(--clr-card);border:1px solid var(--clr-border);border-radius:var(--radius-lg);transition:all var(--transition-base);position:relative;overflow:hidden}
+.feature-card::before{content:'';position:absolute;top:0;left:0;width:100%;height:3px;background:linear-gradient(90deg,transparent,var(--clr-primary),transparent);opacity:0;transition:opacity var(--transition-base)}
+.feature-card:hover{background:var(--clr-card-hover);border-color:var(--clr-border-light);transform:translateY(-6px);box-shadow:var(--shadow-lg)}
+.feature-card:hover::before{opacity:1}
+.feature-icon{width:48px;height:48px;background:var(--clr-primary-subtle);border-radius:var(--radius-md);display:flex;align-items:center;justify-content:center;font-size:1.25rem;margin-bottom:var(--space-lg);transition:background var(--transition-fast)}
+.feature-card:hover .feature-icon{background:var(--clr-primary)}
+.feature-card h3{font-size:var(--fs-lg);margin-bottom:var(--space-sm)}
+.feature-card p{font-size:var(--fs-sm);color:var(--clr-muted);line-height:1.7}
+
+.testimonials-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--space-xl)}
+.t-card{background:var(--clr-card);border:1px solid var(--clr-border);border-radius:var(--radius-lg);padding:var(--space-2xl);transition:all var(--transition-base)}
+.t-card:hover{border-color:var(--clr-border-light);transform:translateY(-4px);box-shadow:var(--shadow-lg)}
+.t-card .stars{color:var(--clr-warning);font-size:var(--fs-sm);margin-bottom:var(--space-md);letter-spacing:2px}
+.t-card p{font-size:var(--fs-sm);line-height:1.7;color:var(--clr-text-secondary);margin-bottom:var(--space-xl);font-style:italic}
+.t-card .author{font-size:var(--fs-sm);font-weight:600}
+.t-card .role{font-size:var(--fs-xs);color:var(--clr-muted)}
+.t-card img{width:44px;height:44px;border-radius:50%;object-fit:cover;float:left;margin-right:12px}
+
+/* FAQ */
+.faq-list{max-width:800px;margin:0 auto;display:flex;flex-direction:column;gap:var(--space-sm)}
+.faq-item{background:var(--clr-card);border:1px solid var(--clr-border);border-radius:var(--radius-md);overflow:hidden;transition:border-color var(--transition-fast)}
+.faq-item.active{border-color:var(--clr-border-light)}
+.faq-question{width:100%;display:flex;align-items:center;justify-content:space-between;padding:var(--space-lg) var(--space-xl);background:none;border:none;text-align:left;cursor:pointer;font-size:var(--fs-base);font-weight:500;color:var(--clr-text);transition:color var(--transition-fast);gap:var(--space-md);font-family:var(--ff-body)}
+.faq-question:hover{color:var(--clr-primary)}
+.faq-icon{width:24px;height:24px;flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:transform var(--transition-base);color:var(--clr-muted)}
+.faq-item.active .faq-icon{transform:rotate(45deg);color:var(--clr-primary)}
+.faq-answer{max-height:0;overflow:hidden;transition:max-height var(--transition-slow)}
+.faq-item.active .faq-answer{max-height:300px}
+.faq-answer-inner{padding:0 var(--space-xl) var(--space-lg);font-size:var(--fs-sm);color:var(--clr-muted);line-height:1.7}
+
+/* CTA */
+.cta-section{background:linear-gradient(135deg,#022c22,#064e3b);text-align:center;padding:var(--space-4xl) var(--space-xl)}
+.cta-section h2{font-size:var(--fs-4xl);font-weight:800;margin-bottom:var(--space-lg)}
+.cta-section p{color:rgba(255,255,255,0.7);max-width:550px;margin:0 auto var(--space-2xl);font-size:var(--fs-lg)}
+
+/* Footer */
+footer{background:var(--clr-bg-alt);border-top:1px solid var(--clr-border);padding:var(--space-4xl) 0 var(--space-xl)}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:var(--space-2xl);margin-bottom:var(--space-3xl)}
+footer h4{font-size:var(--fs-sm);font-weight:600;text-transform:uppercase;letter-spacing:1.5px;color:var(--clr-muted);margin-bottom:var(--space-lg)}
+.footer-links{display:flex;flex-direction:column;gap:var(--space-sm)}
+.footer-links a{font-size:var(--fs-sm);color:var(--clr-text-secondary);transition:color var(--transition-fast)}
+.footer-links a:hover{color:var(--clr-primary)}
+.footer-bottom{max-width:var(--max-width);margin:0 auto;padding:var(--space-xl) var(--space-xl) 0;border-top:1px solid var(--clr-border);font-size:var(--fs-sm);color:var(--clr-muted);text-align:center}
+
+/* Animations */
+@keyframes fade-in-up{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+@keyframes glow-pulse{0%,100%{box-shadow:0 0 8px var(--clr-primary-glow);opacity:1}50%{box-shadow:0 0 20px var(--clr-primary-glow),0 0 40px var(--clr-primary-glow);opacity:0.8}}
+[data-animate]{opacity:0;transform:translateY(30px);transition:opacity 0.6s ease,transform 0.6s ease}
+[data-animate].visible{opacity:1;transform:translateY(0)}
+
+/* Mobile */
+@media(max-width:1024px){.steps-grid,.features-grid{grid-template-columns:repeat(2,1fr)}.testimonials-grid{grid-template-columns:repeat(2,1fr)}.hero-title{font-size:var(--fs-4xl)}}
+@media(max-width:768px){.section{padding:var(--space-3xl) 0}.section-title{font-size:var(--fs-2xl)}.container{padding:0 var(--space-lg)}.nav-links{position:fixed;top:var(--nav-height);left:0;width:100%;background:rgba(0,0,0,0.96);backdrop-filter:blur(20px);flex-direction:column;padding:var(--space-xl);gap:var(--space-lg);border-bottom:1px solid var(--clr-border);transform:translateY(-100%);opacity:0;pointer-events:none;transition:all var(--transition-base)}.nav-links.open{transform:translateY(0);opacity:1;pointer-events:all}.nav-hamburger{display:flex}.hero-title{font-size:var(--fs-3xl)}.hero-stats{flex-wrap:wrap;gap:var(--space-xl)}.hero-actions{flex-direction:column;width:100%}.hero-actions .btn{width:100%}.steps-grid,.features-grid,.testimonials-grid{grid-template-columns:1fr}.footer-grid{grid-template-columns:1fr 1fr}.pricing-card.featured::before{font-size:10px;right:calc(-1*var(--space-2xl)-10px);padding:2px var(--space-2xl)}}
+@media(max-width:480px){.hero-title{font-size:var(--fs-2xl)}.footer-grid{grid-template-columns:1fr}}
+</style>
+</head><body>
+
+<div style="background:#0a0a0a;border-bottom:1px solid rgba(255,255,255,0.06);padding:7px 0;font-size:11px;text-align:center;font-family:Arial,sans-serif;">
+<span style="color:#888">Part of </span>
+<a href="/" style="color:#0ea5e9;font-weight:600">9amLeads</a>
+<span style="color:#555;margin:0 6px">|</span>
+<a href="/movingleadsdaily/" style="color:#888;text-decoration:none">Moving</a>
+<span style="color:#444;margin:0 4px">·</span>
+<a href="/probateleads/" style="color:#888;text-decoration:none">Probate</a>
+<span style="color:#444;margin:0 4px">·</span>
+<a href="/newbusinessalert/" style="color:#888;text-decoration:none">New Business</a>
+<span style="color:#444;margin:0 4px">·</span>
+<a href="/planningleads/" style="color:#888;text-decoration:none">Planning</a>
+<span style="color:#444;margin:0 4px">·</span>
+<a href="/tenders/" style="color:#888;text-decoration:none">Tenders</a>
+</div>
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="/planningleads/" class="nav-logo"><i class="fas fa-hard-hat" style="color:var(--clr-primary);font-size:24px"></i> Planning <span>Leads</span></a>
+    <div class="nav-links" id="navLinks">
+      <a href="/planningleads/">Home</a>
+      <a href="/planningleads/how-it-works.html">How It Works</a>
+      <a href="/planningleads/pricing.html">Pricing</a>
+      <a href="/planningleads/about.html">About</a>
+      <a href="/planningleads/contact.html">Contact</a>
+      <a href="/planningleads/contact.html" class="btn btn-primary btn-sm" style="padding:8px 20px"><i class="fas fa-star"></i> Free Trial</a>
+    </div>
+    <button class="nav-hamburger" id="hamburger"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-overlay"></div>
+  <div class="hero-grid-lines"></div>
+  <div class="hero-content">
+    <div class="hero-badge"><span class="badge-dot"></span> Daily Planning Application Alerts — UK Wide</div>
+    <h1 class="hero-title">Know Every Planning Permission <span class="highlight">Before Your Competitors</span></h1>
+    <p class="hero-subtitle">Every planning application means potential work for architects, builders, surveyors, estate agents, and more. We track all applications submitted to every UK council and deliver them to you daily.</p>
+    <div class="hero-actions">
+      <a href="/planningleads/contact.html" class="btn btn-primary btn-lg"><i class="fas fa-rocket"></i> Start Free Trial</a>
+      <a href="/planningleads/how-it-works.html" class="btn btn-secondary btn-lg"><i class="fas fa-play-circle"></i> How It Works</a>
+    </div>
+    <img src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=900&q=80" alt="Property development" style="width:100%;max-width:900px;margin:40px auto 0;border-radius:var(--radius-xl);box-shadow:var(--shadow-xl);display:block" loading="lazy">
+    <div class="hero-stats">
+      <div style="text-align:center"><div class="hero-stat-value">400k+</div><div class="hero-stat-label">Applications/Year</div></div>
+      <div style="text-align:center"><div class="hero-stat-value">Daily</div><div class="hero-stat-label">Updates</div></div>
+      <div style="text-align:center"><div class="hero-stat-value">£79</div><div class="hero-stat-label">Per Month</div></div>
+      <div style="text-align:center"><div class="hero-stat-value">7 Days</div><div class="hero-stat-label">Free Trial</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="how">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label">Simple Process</div>
+      <h2 class="section-title">How It <span style="color:var(--clr-primary)">Works</span></h2>
+      <p class="section-subtitle">Start receiving daily planning application alerts for your target areas.</p>
+    </div>
+    <div class="steps-grid">
+      <div class="step-card" data-animate><div class="step-number">01</div><div class="step-icon"><i class="fas fa-map-marker-alt"></i></div><h3>Select Your Areas</h3><p>Choose which local authorities or postcode areas you want to monitor. Cover one council or the whole UK.</p></div>
+      <div class="step-card" data-animate><div class="step-number">02</div><div class="step-icon"><i class="fas fa-building"></i></div><h3>We Monitor Councils</h3><p>Our system checks every UK council's planning portal daily. Every new application is captured.</p></div>
+      <div class="step-card" data-animate><div class="step-number">03</div><div class="step-icon"><i class="fas fa-envelope-open-text"></i></div><h3>Receive Daily Alerts</h3><p>Every morning you get a clean list of new planning applications with full details and property addresses.</p></div>
+      <div class="step-card" data-animate><div class="step-number">04</div><div class="step-icon"><i class="fas fa-tools"></i></div><h3>Win New Projects</h3><p>Contact applicants before they've chosen their architect, builder, or surveyor. Be first to quote.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="background:var(--clr-bg-alt)">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label">Features</div>
+      <h2 class="section-title">Everything You Need to <span style="color:var(--clr-primary)">Win More Projects</span></h2>
+      <p class="section-subtitle">Comprehensive planning data delivered daily. Filter, search, and export with ease.</p>
+    </div>
+    <div class="features-grid">
+      <div class="feature-card" data-animate><div class="feature-icon"><i class="fas fa-file-alt"></i></div><h3>Full Application Details</h3><p>Address, description, applicant name, application type, status, council reference — everything you need.</p></div>
+      <div class="feature-card" data-animate><div class="feature-icon"><i class="fas fa-filter"></i></div><h3>Filter by Type</h3><p>Only receive applications relevant to you — house extensions, new builds, commercial, change of use, and more.</p></div>
+      <div class="feature-card" data-animate><div class="feature-icon"><i class="fas fa-map-marked-alt"></i></div><h3>Map View</h3><p>See all applications on an interactive map. Perfect for estate agents tracking activity in their patch.</p></div>
+      <div class="feature-card" data-animate><div class="feature-icon"><i class="fas fa-chart-line"></i></div><h3>Market Intelligence</h3><p>Spot trends in your area. See which types of development are increasing and where.</p></div>
+      <div class="feature-card" data-animate><div class="feature-icon"><i class="fas fa-envelope"></i></div><h3>Email & Dashboard</h3><p>Receive daily emails or access your online dashboard. CSV export included.</p></div>
+      <div class="feature-card" data-animate><div class="feature-icon"><i class="fas fa-search"></i></div><h3>Search History</h3><p>Search and filter 90 days of application data. Never miss an opportunity.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label">Testimonials</div>
+      <h2 class="section-title">What Our <span style="color:var(--clr-primary)">Customers Say</span></h2>
+      <p class="section-subtitle">Real professionals using Planning Leads to grow their business.</p>
+    </div>
+    <div class="testimonials-grid">
+      <div class="t-card" data-animate><div class="stars">★★★★★</div><p>"I've been an architect for 15 years and this is the best business development tool I've ever used. I get 5-10 relevant planning alerts every week."</p><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&q=80" alt=""><div class="author">Michael Stone</div><div class="role">Architect · London</div></div>
+      <div class="t-card" data-animate><div class="stars">★★★★★</div><p>"We use Planning Leads to identify development opportunities before they hit the market. It's given us a significant edge over other estate agents."</p><img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=80&q=80" alt=""><div class="author">Claire Bennett</div><div class="role">Estate Agent · Manchester</div></div>
+      <div class="t-card" data-animate><div class="stars">★★★★★</div><p>"I run a small building firm and this has been a game changer. I contact homeowners the week their extension is approved. My conversion rate is through the roof."</p><img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=80&q=80" alt=""><div class="author">Gary Wilson</div><div class="role">Builder · Birmingham</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="background:var(--clr-bg-alt)" id="faq">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label">FAQ</div>
+      <h2 class="section-title">Frequently Asked <span style="color:var(--clr-primary)">Questions</span></h2>
+      <p class="section-subtitle">Everything you need to know about Planning Leads.</p>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item active"><button class="faq-question">Where does the data come from? <span class="faq-icon"><i class="fas fa-plus"></i></span></button><div class="faq-answer"><div class="faq-answer-inner">We aggregate planning application data from every UK local authority's planning portal. Over 350 councils across England, Wales, Scotland, and Northern Ireland.</div></div></div>
+      <div class="faq-item"><button class="faq-question">How fresh is the data? <span class="faq-icon"><i class="fas fa-plus"></i></span></button><div class="faq-answer"><div class="faq-answer-inner">We check every council's portal daily. Applications submitted today will appear in your next morning's alert. Most councils publish within 24 hours.</div></div></div>
+      <div class="faq-item"><button class="faq-question">Can I filter by application type? <span class="faq-icon"><i class="fas fa-plus"></i></span></button><div class="faq-answer"><div class="faq-answer-inner">Yes. Filter by householder extensions, new dwellings, commercial developments, change of use, listed building consent, prior approval, and more.</div></div></div>
+      <div class="faq-item"><button class="faq-question">What information is included? <span class="faq-icon"><i class="fas fa-plus"></i></span></button><div class="faq-answer"><div class="faq-answer-inner">Property address, full description of development, applicant name, application type, status, council reference number, date submitted, and link to full application on council portal.</div></div></div>
+      <div class="faq-item"><button class="faq-question">How do I cancel? <span class="faq-icon"><i class="fas fa-plus"></i></span></button><div class="faq-answer"><div class="faq-answer-inner">Cancel anytime from your dashboard or by email. No notice period, no cancellation fees. Free trial included.</div></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section">
+  <h2>Ready to Win More Projects?</h2>
+  <p>Join 800+ UK professionals already using Planning Leads to find new business opportunities. Start your 7-day free trial.</p>
+  <a href="/planningleads/contact.html" class="btn btn-primary btn-lg"><i class="fas fa-rocket"></i> Start Free Trial</a>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div><div class="nav-logo" style="font-size:20px;margin-bottom:var(--space-md)"><i class="fas fa-hard-hat" style="color:var(--clr-primary);font-size:20px;margin-right:8px"></i> Planning <span>Leads</span></div><p style="font-size:var(--fs-sm);max-width:320px">Daily planning application alerts for UK professionals.</p></div>
+      <div><h4>Pages</h4><div class="footer-links"><a href="/planningleads/">Home</a><a href="/planningleads/about.html">About</a><a href="/planningleads/how-it-works.html">How It Works</a><a href="/planningleads/pricing.html">Pricing</a><a href="/planningleads/contact.html">Contact</a></div></div>
+      <div><h4>Resources</h4><div class="footer-links"><a href="/privacy.html">Privacy</a><a href="/terms.html">Terms</a></div></div>
+      <div><h4>Contact</h4><p style="font-size:var(--fs-sm);color:var(--clr-text-secondary)">hello@planningleads.co.uk</p></div>
+    </div>
+  </div>
+  <div class="footer-bottom">© 2026 Planning Leads. Made in the UK 🇬🇧</div>
+</footer>
+
+<div id="cookieConsent" style="position:fixed;bottom:0;left:0;right:0;background:rgba(0,0,0,0.95);backdrop-filter:blur(12px);padding:16px 24px;z-index:9999;display:none;border-top:1px solid var(--clr-border)">
+  <div style="max-width:var(--max-width);margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap">
+    <p style="font-size:13px;color:var(--clr-muted);line-height:1.5;margin:0">We use cookies to improve your experience. By using this site you accept our <a href="/privacy.html" style="color:var(--clr-primary)">Privacy Policy</a>.</p>
+    <button onclick="this.parentElement.parentElement.style.display='none';localStorage.setItem('pl_cookie','1')" class="btn btn-primary btn-sm">Accept</button>
+  </div>
+</div>
+
+<button id="btop" onclick="window.scrollTo({top:0,behavior:'smooth'})" style="position:fixed;bottom:80px;right:20px;width:44px;height:44px;border-radius:50%;background:var(--clr-primary);color:#fff;border:none;font-size:16px;cursor:pointer;box-shadow:0 4px 16px rgba(0,0,0,0.3);opacity:0;visibility:hidden;transform:translateY(10px);transition:all 0.3s;z-index:999;display:flex;align-items:center;justify-content:center"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M18 15l-6-6-6 6"/></svg></button>
+
+<a href="https://wa.me/440000000000" target="_blank" rel="noopener" style="position:fixed;bottom:20px;right:20px;width:52px;height:52px;border-radius:50%;background:#25D366;color:#fff;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(37,211,102,0.3);z-index:998;text-decoration:none;transition:all 0.3s;font-size:24px" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'"><svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
+
+<script>
+document.querySelectorAll('.faq-question').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const item = btn.closest('.faq-item');
+    const was = item.classList.contains('active');
+    item.closest('.faq-list').querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
+    if (!was) item.classList.add('active');
+  });
+});
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+}, { threshold: 0.15 });
+document.querySelectorAll('[data-animate]').forEach(el => obs.observe(el));
+document.getElementById('hamburger').addEventListener('click', function() {
+  document.getElementById('navLinks').classList.toggle('open');
+  this.classList.toggle('active');
+});
+window.addEventListener('scroll', function() {
+  document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 50);
+  const b = document.getElementById('btop');
+  if (b) {
+    if (window.scrollY > 400) { b.style.opacity = '1'; b.style.visibility = 'visible'; b.style.transform = 'translateY(0)'; }
+    else { b.style.opacity = '0'; b.style.visibility = 'hidden'; b.style.transform = 'translateY(10px)'; }
+  }
+});
+if (!localStorage.getItem('pl_cookie')) document.getElementById('cookieConsent').style.display = 'flex';
+</script>
+</body></html>

@@ -1,0 +1,187 @@
+{
+  "business": {
+    "id": "the-quote-cure",
+    "name": "The Quote Cure",
+    "type": "insurance",
+    "status": "active",
+    "health": "healthy",
+    "created": "2026-05-02"
+  },
+  "leads": [],
+  "customers": [],
+  "tasks": [],
+  "followUps": [],
+  "campaigns": [],
+  "templates": [
+    {
+      "id": 1,
+      "name": "New Lead Outreach",
+      "type": "email",
+      "subject": "Hi {{customer_name}}, Need a Quote?",
+      "body": "Hi {{customer_name}},\n\nThanks for your interest in The Quote Cure. We compare prices from over 50 insurers to find you the best deal.\n\nGet a quote: https://thequotecure.co.uk/quote\n\nBest regards\nThe Quote Cure Team"
+    },
+    {
+      "id": 2,
+      "name": "Follow-up",
+      "type": "email",
+      "subject": "Following up on your enquiry",
+      "body": "Hi {{customer_name}},\n\nI wanted to follow up on your recent enquiry. Have you had a chance to think about it?\n\nLet me know if you have any questions.\n\nBest regards\nThe Quote Cure Team"
+    },
+    {
+      "id": 3,
+      "name": "Interested Lead",
+      "type": "email",
+      "subject": "Great choice! {{customer_name}}",
+      "body": "Hi {{customer_name}},\n\nGreat to hear you're interested! Let me provide you with a personalised quote.\n\nBest regards\nThe Quote Cure Team"
+    },
+    {
+      "id": 4,
+      "name": "Not Interested Response",
+      "type": "email",
+      "subject": "No problem, {{customer_name}}",
+      "body": "Hi {{customer_name}},\n\nNo problem at all. If you change your mind in the future, we'd be happy to help.\n\nBest regards\nThe Quote Cure Team"
+    },
+    {
+      "id": 5,
+      "name": "Complaint/Review",
+      "type": "email",
+      "subject": "RE: Your recent enquiry",
+      "body": "Hi {{customer_name}},\n\nThank you for reaching out. I'd like to personally look into this for you.\n\n\nCan you please provide more details so I can assist you better?\n\nBest regards\nThe Quote Cure Team"
+    },
+    {
+      "id": 6,
+      "name": "General Reply",
+      "type": "email",
+      "subject": "RE: Your enquiry",
+      "body": "Hi {{customer_name}},\n\nThank you for getting in touch. How can I help you today?\n\nBest regards\nThe Quote Cure Team"
+    }
+  ],
+  "knowledgeBase": [
+    {
+      "id": 1,
+      "category": "Services",
+      "title": "Car Insurance",
+      "content": "We compare car insurance from over 50 providers."
+    },
+    {
+      "id": 2,
+      "category": "Services",
+      "title": "Home Insurance",
+      "content": "Buildings and contents insurance comparisons."
+    },
+    {
+      "id": 3,
+      "category": "Services",
+      "title": "Travel Insurance",
+      "content": "Single trip and annual travel insurance."
+    },
+    {
+      "id": 4,
+      "category": "Services",
+      "title": "Life Insurance",
+      "content": "Term life and whole of life cover."
+    },
+    {
+      "id": 5,
+      "category": "Opening Hours",
+      "title": "Opening Hours",
+      "content": "Mon-Fri: 9am-6pm, Sat: 9am-1pm"
+    },
+    {
+      "id": 6,
+      "category": "Contact Details",
+      "title": "Contact",
+      "content": "Phone: 020 1234 5681, Email: hello@thequotecure.co.uk"
+    },
+    {
+      "id": 7,
+      "category": "Pricing Guidance",
+      "title": "Car Insurance Average",
+      "content": "Average saved: £300 per year. Typical savings: 20-40%."
+    },
+    {
+      "id": 8,
+      "category": "Pricing Guidance",
+      "title": "No Fee Policy",
+      "content": "We don't charge fees - we commission from insurers."
+    },
+    {
+      "id": 9,
+      "category": "Policies",
+      "title": "FCA Regulated",
+      "content": "We are FCA authorised and regulated."
+    },
+    {
+      "id": 10,
+      "category": "Policies",
+      "title": "Complaints",
+      "content": "Contact: complaints@thequotecure.co.uk for issues."
+    }
+  ],
+  "designCenter": [],
+  "automationRules": [
+    {
+      "id": 1,
+      "name": "Lead Approved",
+      "trigger": "lead_status_changed",
+      "condition": "status = 'New'",
+      "action": "create_outreach_draft",
+      "enabled": true
+    },
+    {
+      "id": 2,
+      "name": "Follow-up Due",
+      "trigger": "followup_due",
+      "condition": "due_date = today",
+      "action": "create_task",
+      "enabled": true
+    },
+    {
+      "id": 3,
+      "name": "Lead Interested",
+      "trigger": "lead_status_changed",
+      "condition": "status = 'Interested'",
+      "action": "move_to_hot_leads",
+      "enabled": true
+    },
+    {
+      "id": 4,
+      "name": "Lead Rejected",
+      "trigger": "lead_status_changed",
+      "condition": "status = 'Not Interested'",
+      "action": "log_reason",
+      "enabled": true
+    },
+    {
+      "id": 5,
+      "name": "Duplicate Detected",
+      "trigger": "lead_created",
+      "condition": "email_exists",
+      "action": "mark_duplicate",
+      "enabled": true
+    }
+  ],
+  "subAgent": {
+    "name": "The Quote Cure Agent",
+    "status": "stopped",
+    "instructions": "You are the AI agent for The Quote Cure insurance comparison service. Your role is to help with lead management and customer enquiries.",
+    "dailyLimit": 100,
+    "autoScrape": false,
+    "autoFollowUp": false
+  },
+  "activityLog": [],
+  "analytics": {
+    "leadsByStatus": {},
+    "leadsBySource": {},
+    "conversionRate": 0,
+    "revenueWon": 0,
+    "revenueLost": 0,
+    "averageDealValue": 0
+  },
+  "settings": {
+    "leadLimit": 100,
+    "defaultStatus": "New",
+    "autoAssign": false,
+    "notifyOnNew": true
+  }
+}

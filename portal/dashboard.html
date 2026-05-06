@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>Dashboard — MovingLeadsDaily</title><style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;background:#f8fafc;color:#0f172a}
+nav{display:flex;justify-content:space-between;align-items:center;padding:16px 24px;background:#fff;border-bottom:1px solid #e2e8f0;position:sticky;top:0;z-index:100}
+.logo{display:flex;align-items:center;gap:10px;font-size:18px;font-weight:800}
+.logo .mark{width:32px;height:32px;background:linear-gradient(135deg,#ff6b35,#e85d26);border-radius:8px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:12px;font-weight:800}
+.logo span{color:#ff6b35}
+.nav-links{display:flex;gap:16px;align-items:center}
+.nav-links a{text-decoration:none;color:#475569;font-size:14px;font-weight:500;padding:6px 12px;border-radius:6px;transition:all .2s}
+.nav-links a:hover{background:#f1f5f9}
+.nav-links a.active{background:#f1f5f9;color:#ff6b35;font-weight:600}
+.nav-links .btn-out{color:#ef4444;font-weight:600}
+.container{max-width:1140px;margin:0 auto;padding:32px 24px}
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:32px}
+.stat-card{background:#fff;border-radius:16px;padding:24px;border:1px solid #e2e8f0}
+.stat-card .num{font-size:32px;font-weight:800;color:#ff6b35}
+.stat-card .label{color:#64748b;font-size:13px;margin-top:4px}
+.card{background:#fff;border-radius:16px;padding:24px;border:1px solid #e2e8f0;margin-bottom:20px}
+.card-title{font-size:16px;font-weight:700;margin-bottom:16px;color:#0f172a}
+table{width:100%;border-collapse:collapse;font-size:14px}
+th{text-align:left;padding:10px 12px;color:#64748b;font-weight:600;font-size:12px;text-transform:uppercase;letter-spacing:0.5px;border-bottom:2px solid #e2e8f0;background:#f8fafc}
+td{padding:10px 12px;border-bottom:1px solid #f1f5f9;color:#475569}
+.empty-state{text-align:center;padding:60px 20px;color:#94a3b8;font-size:14px}
+.sub-badge{display:inline-block;padding:4px 12px;border-radius:20px;font-size:12px;font-weight:600}
+.sub-active{background:rgba(34,197,94,0.1);color:#16a34a}
+.sub-trial{background:rgba(251,191,36,0.1);color:#d97706}
+.sub-expired{background:rgba(239,68,68,0.1);color:#dc2626}
+.btn{display:inline-flex;align-items:center;gap:6px;padding:10px 20px;border-radius:8px;font-weight:600;font-size:13px;cursor:pointer;border:none;text-decoration:none;transition:all .2s}
+.btn-primary{background:#ff6b35;color:#fff}
+.btn-primary:hover{transform:translateY(-2px)}
+.btn-outline{background:transparent;border:1px solid #e2e8f0;color:#475569}
+.btn-outline:hover{border-color:#ff6b35;color:#ff6b35}
+.btn-danger{background:#ef4444;color:#fff}
+.btn-success{background:#16a34a;color:#fff}
+.lead-tools{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:24px}
+.tool-card{background:#fff;border-radius:16px;padding:24px;border:1px solid #e2e8f0;text-align:center;cursor:pointer;transition:all .3s}
+.tool-card:hover{box-shadow:0 8px 24px rgba(0,0,0,0.06);transform:translateY(-2px);border-color:#ff6b35}
+.tool-card .icon{font-size:32px;margin-bottom:12px}
+.tool-card h3{font-size:14px;margin-bottom:4px}
+.tool-card p{color:#64748b;font-size:12px}
+.pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:12px}
+.plan-card{border:1px solid #e2e8f0;border-radius:12px;padding:20px;text-align:center;transition:all .3s}
+.plan-card:hover{border-color:#ff6b35;box-shadow:0 4px 16px rgba(255,107,53,0.1)}
+.plan-card.featured{border-color:#ff6b35;background:linear-gradient(180deg,#fff5f0,#fff)}
+.plan-card .pname{font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.5px;color:#64748b;margin-bottom:8px}
+.plan-card .pprice{font-size:28px;font-weight:800;color:#0f172a}
+.plan-card .pprice span{font-size:14px;font-weight:400;color:#64748b}
+.plan-card .pdesc{font-size:12px;color:#94a3b8;margin:4px 0 12px}
+.plan-card .pfeatures{list-style:none;padding:0;margin:12px 0;text-align:left;font-size:12px}
+.plan-card .pfeatures li{padding:4px 0;color:#475569;display:flex;align-items:center;gap:6px}
+.plan-card .pfeatures li::before{content:'\2713';color:#16a34a;font-weight:700}
+.plan-card .popular-badge{display:inline-block;background:#ff6b35;color:#fff;font-size:10px;font-weight:700;padding:3px 10px;border-radius:999px;text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px}
+footer{text-align:center;padding:32px;color:#94a3b8;font-size:13px;border-top:1px solid #e2e8f0;margin-top:48px}
+@media(max-width:768px){.stats-grid,.lead-tools,.pricing-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:480px){.pricing-grid{grid-template-columns:1fr}}
+</style></head>
+<body>
+<nav>
+<div class="logo"><div class="mark">ML</div>Moving<span>LeadsDaily</span></div>
+<div class="nav-links">
+<a href="/portal/dashboard.html" class="active">Dashboard</a>
+<a href="/portal/leads.html">My Leads</a>
+<a href="#" id="logout-btn" class="btn-out" onclick="logout()">Sign Out</a>
+</div>
+</nav>
+<div class="container">
+<div class="stats-grid">
+<div class="stat-card"><div class="num" id="stat-leads">0</div><div class="label">Total Leads</div></div>
+<div class="stat-card"><div class="num" id="stat-week">0</div><div class="label">This Week</div></div>
+<div class="stat-card"><div class="num" id="stat-plan">—</div><div class="label">Your Plan</div></div>
+<div class="stat-card"><div class="num" id="stat-status">—</div><div class="label">Status</div></div>
+</div>
+
+<div class="card">
+<div class="card-title">Your Tools</div>
+<div class="lead-tools">
+<div class="tool-card" onclick="scrollToLeads()"><div class="icon">📋</div><h3>View Leads</h3><p>See all your moving leads</p></div>
+<div class="tool-card" onclick="downloadCSV()"><div class="icon">📥</div><h3>Download CSV</h3><p>Export leads to spreadsheet</p></div>
+<div class="tool-card" onclick="alert('Contact your account manager to update filters.')"><div class="icon">🔍</div><h3>Update Filters</h3><p>Change your target area</p></div>
+</div>
+</div>
+
+<div class="card" id="subscription-section">
+<div class="card-title">Subscription</div>
+<div id="sub-info" style="margin-bottom:12px;font-size:13px;color:#64748b">Loading...</div>
+<div id="sub-pricing"></div>
+<div id="sub-msg" style="margin-top:8px;font-size:13px;color:#16a34a;display:none"></div>
+</div>
+
+<div class="card" id="leads-section">
+<div class="card-title" style="display:flex;justify-content:space-between;align-items:center">
+<span>Your Recent Leads</span>
+<div style="display:flex;gap:8px">
+<button class="btn btn-outline" onclick="downloadCSV()">Download CSV</button>
+</div>
+</div>
+<div id="leads-table-container">
+<div class="empty-state">Loading your leads...</div>
+</div>
+</div>
+</div>
+
+<footer>
+<p>MovingLeadsDaily Customer Portal &copy; 2026</p>
+</footer>
+
+<script>
+let currentSession = null;
+const API_BASE = localStorage.getItem('9am_api_url') || (window.location.hostname.includes('railway') ? window.location.origin : 'http://localhost:8012');
+
+function logout() {
+  localStorage.removeItem('mld_portal_session');
+  window.location.href = '/portal/';
+}
+
+function getSession() {
+  const s = localStorage.getItem('mld_portal_session');
+  if (!s) { window.location.href = '/portal/'; return null; }
+  return JSON.parse(s);
+}
+
+function getToken() {
+  const s = getSession();
+  return s ? s.token : null;
+}
+
+async function apiFetch(path, options = {}) {
+  const token = getToken();
+  const res = await fetch(API_BASE + path, {
+    ...options,
+    headers: { ...options.headers, 'Authorization': 'Bearer ' + (token || '') }
+  });
+  return res.json();
+}
+
+function downloadCSV() {
+  const rows = document.querySelectorAll('#leads-table tbody tr');
+  if (!rows.length) { alert('No leads to export'); return; }
+  let csv = 'Address,Type,Price,Bedrooms,Date\n';
+  rows.forEach(r => {
+    const cells = r.querySelectorAll('td');
+    if (cells.length >= 5) csv += `"${cells[0].textContent}","${cells[1].textContent}","${cells[2].textContent}","${cells[3].textContent}","${cells[4].textContent}"\n`;
+  });
+  const blob = new Blob([csv], { type: 'text/csv' });
+  const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = 'my-leads.csv'; a.click();
+}
+
+function scrollToLeads() {
+  document.getElementById('leads-section').scrollIntoView({ behavior: 'smooth' });
+}
+
+async function loadSubscription() {
+  const planLabels = { free_trial: 'Free Trial', starter: 'Starter', pro: 'Pro', enterprise: 'Enterprise' };
+  const statusBadge = { free_trial: '<span class="sub-badge sub-trial">Trial</span>', starter: '<span class="sub-badge sub-active">Starter</span>', pro: '<span class="sub-badge sub-active">Pro</span>', enterprise: '<span class="sub-badge sub-active">Enterprise</span>' };
+
+  const infoEl = document.getElementById('sub-info');
+  const pricingEl = document.getElementById('sub-pricing');
+  const msgEl = document.getElementById('sub-msg');
+
+  try {
+    const data = await apiFetch('/api/subscription');
+    if (data.error) { infoEl.textContent = 'Could not load subscription: ' + data.error; return; }
+
+    const plan = data.plan || 'free_trial';
+    const isPaid = plan !== 'free_trial';
+    const label = planLabels[plan] || plan;
+    const badge = statusBadge[plan] || '<span class="sub-badge sub-active">' + plan + '</span>';
+
+    infoEl.innerHTML = 'Current plan: ' + badge + ' &middot; ' + data.leads_per_day + ' leads/day' +
+      (data.trial_ends && !isPaid ? ' &middot; Trial ends ' + new Date(data.trial_ends).toLocaleDateString() : '') +
+      (data.subscription?.current_period_end ? ' &middot; Next billing: ' + new Date(data.subscription.current_period_end).toLocaleDateString() : '');
+
+    if (isPaid) {
+      pricingEl.innerHTML = '<p style="font-size:13px;color:#16a34a">\u2705 You are on the ' + label + ' plan. Your leads are active.</p>';
+      return;
+    }
+
+    pricingEl.innerHTML = `
+      <p style="font-size:13px;color:#64748b;margin-bottom:12px">Choose a plan to upgrade. Cancel anytime.</p>
+      <div class="pricing-grid">
+        <div class="plan-card">
+          <div class="pname">Starter</div>
+          <div class="pprice">&pound;29<span>/mo</span></div>
+          <div class="pdesc">10 leads/day &middot; 1 area</div>
+          <ul class="pfeatures"><li>Daily email at 9am</li><li>1 postcode area</li><li>Online dashboard</li><li>Cancel anytime</li></ul>
+          <button class="btn btn-outline" style="width:100%" onclick="checkout('starter')">Upgrade</button>
+        </div>
+        <div class="plan-card featured">
+          <div class="popular-badge">Popular</div>
+          <div class="pname">Pro</div>
+          <div class="pprice">&pound;79<span>/mo</span></div>
+          <div class="pdesc">40 leads/day &middot; 3 areas</div>
+          <ul class="pfeatures"><li>Daily email at 9am</li><li>Up to 3 postcode areas</li><li>Full contact details</li><li>SMS alerts</li><li>Priority support</li></ul>
+          <button class="btn btn-primary" style="width:100%" onclick="checkout('pro')">Upgrade</button>
+        </div>
+        <div class="plan-card">
+          <div class="pname">Enterprise</div>
+          <div class="pprice">&pound;149<span>/mo</span></div>
+          <div class="pdesc">100 leads/day &middot; Unlimited areas</div>
+          <ul class="pfeatures"><li>Everything in Pro</li><li>Unlimited postcode areas</li><li>API access</li><li>Dedicated manager</li></ul>
+          <button class="btn btn-outline" style="width:100%" onclick="checkout('enterprise')">Upgrade</button>
+        </div>
+      </div>`;
+  } catch(e) {
+    infoEl.textContent = 'Error loading subscription: ' + e.message;
+  }
+}
+
+async function checkout(plan) {
+  const msgEl = document.getElementById('sub-msg');
+  msgEl.style.display = 'none';
+
+  try {
+    const data = await apiFetch('/api/create-checkout', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ plan })
+    });
+
+    if (data.url) {
+      window.location.href = data.url;
+    } else {
+      msgEl.style.display = 'block';
+      msgEl.style.color = '#ef4444';
+      msgEl.textContent = 'Error: ' + (data.error || 'Could not create checkout');
+    }
+  } catch(e) {
+    msgEl.style.display = 'block';
+    msgEl.style.color = '#ef4444';
+    msgEl.textContent = 'Error: ' + e.message;
+  }
+}
+
+async function confirmUpgrade(sessionId) {
+  const msgEl = document.getElementById('sub-msg');
+  try {
+    const data = await apiFetch('/api/subscribe', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ plan: 'pro', session_id: sessionId })
+    });
+
+    if (data.success) {
+      msgEl.style.display = 'block';
+      msgEl.style.color = '#16a34a';
+      msgEl.textContent = '\u2705 ' + data.message;
+      setTimeout(() => window.location.reload(), 2000);
+    }
+  } catch(e) {
+    // Webhook will handle it, just reload
+    setTimeout(() => window.location.reload(), 1000);
+  }
+}
+
+function loadDashboard() {
+  const session = getSession();
+  if (!session) return;
+  currentSession = session;
+
+  const params = new URLSearchParams(window.location.search);
+  if (params.get('checkout') === 'success') {
+    document.getElementById('sub-msg').style.display = 'block';
+    document.getElementById('sub-msg').style.color = '#16a34a';
+    document.getElementById('sub-msg').textContent = '\u2705 Payment successful! Activating your plan...';
+    const sessionId = params.get('session_id');
+    if (sessionId) confirmUpgrade(sessionId);
+  }
+
+  loadSubscription();
+
+  try {
+    const stored = localStorage.getItem('mld_leads_' + session.clientId);
+    let leads = stored ? JSON.parse(stored) : [];
+    let totalLeads = leads.length;
+    let weekLeads = leads.filter(l => l.date && l.date > new Date(Date.now() - 7*86400000).toISOString().split('T')[0]).length;
+    let plan = session.plan || 'Trial';
+    let status = session.status || 'Active';
+
+    document.getElementById('stat-leads').textContent = totalLeads;
+    document.getElementById('stat-week').textContent = weekLeads;
+    document.getElementById('stat-plan').textContent = plan;
+    document.getElementById('stat-status').innerHTML = '<span class="sub-badge sub-active">' + status + '</span>';
+
+    if (leads.length > 0) {
+      renderLeads(leads);
+    } else {
+      generateDemoLeads(session);
+    }
+  } catch(e) {
+    document.getElementById('leads-table-container').innerHTML = '<div class="empty-state">Your leads will appear here once your subscription activates.</div>';
+  }
+}
+
+function generateDemoLeads(session) {
+  const areas = ['SW1A 1AA', 'SW1E 5NA', 'W1B 1SH', 'N2 0EY', 'SE3 0QU', 'EC2A 4NE', 'NW1 4SA'];
+  const types = ['House', 'Flat', 'Bungalow', 'Maisonette'];
+  const leads = [];
+  for (let i = 0; i < 12; i++) {
+    const daysAgo = Math.floor(Math.random() * 14);
+    const d = new Date(); d.setDate(d.getDate() - daysAgo);
+    leads.push({
+      address: Math.floor(Math.random()*200)+1 + ' ' + ['Acacia Avenue','Victoria Road','Green Lane','Park Crescent','Oakwood Gardens','Market Street','Church Road'][i%7] + ', ' + areas[i%areas.length],
+      type: types[i%types.length],
+      price: '£' + (Math.floor(Math.random()*900)+100) + ',000',
+      bedrooms: Math.floor(Math.random()*4)+1 + ' bed',
+      date: d.toISOString().split('T')[0]
+    });
+  }
+  leads.sort((a,b) => b.date.localeCompare(a.date));
+  localStorage.setItem('mld_leads_' + session.clientId, JSON.stringify(leads));
+
+  document.getElementById('stat-leads').textContent = leads.length;
+  document.getElementById('stat-week').textContent = leads.filter(l => l.date > new Date(Date.now()-7*86400000).toISOString().split('T')[0]).length;
+  renderLeads(leads);
+}
+
+function renderLeads(leads) {
+  const container = document.getElementById('leads-table-container');
+  if (leads.length === 0) { container.innerHTML = '<div class="empty-state">No leads yet. They will appear here daily.</div>'; return; }
+  container.innerHTML = `<table><thead><tr><th>Address</th><th>Type</th><th>Price</th><th>Bedrooms</th><th>Date</th></tr></thead><tbody>
+    ${leads.slice(0, 20).map(l => `<tr><td>${l.address}</td><td>${l.type}</td><td>${l.price}</td><td>${l.bedrooms}</td><td>${l.date}</td></tr>`).join('')}
+  </tbody></table>`;
+}
+
+loadDashboard();
+</script>
+</body>
+</html>

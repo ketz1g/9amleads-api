@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Government Tenders Matched to Your Business — Delivered at 9am | 9amLeads</title>
+  <meta name="description" content="Never miss a government contract opportunity. UK public sector tenders matched to your business and delivered to your inbox every morning at 9am.">
+  <meta name="keywords" content="government tenders, public sector contracts, UK tenders, contracts finder, bid opportunities, government contracts, 9amLeads">
+  <meta property="og:title" content="Government Tenders Matched to Your Business — Delivered at 9am">
+  <meta property="og:description" content="Never miss a government contract. UK public sector tenders matched to your business, delivered at 9am.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://tenders.9amleads.com">
+  <meta property="og:image" content="https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=1200">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%236366f1'/><text x='50' y='68' font-size='50' text-anchor='middle' fill='white' font-family='system-ui'>9</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{
+      --primary:#6366f1;--primary-dark:#4f46e5;--primary-light:#818cf8;--primary-glow:rgba(99,102,241,0.15);
+      --bg:#000000;--bg-card:#0a0a0a;--bg-card-hover:#111111;--border:#1a1a1a;--border-hover:#2a2a2a;
+      --text:#ffffff;--text-secondary:#a1a1aa;--text-muted:#52525b;
+      --radius:12px;--radius-sm:8px;--radius-lg:16px;--radius-xl:24px;
+      --shadow:0 4px 24px rgba(0,0,0,0.3);--shadow-lg:0 8px 40px rgba(0,0,0,0.4);
+      --shadow-primary:0 0 30px rgba(99,102,241,0.25);
+      --transition:all 0.3s cubic-bezier(0.4,0,0.2,1);
+      --font-heading:'Outfit',-apple-system,BlinkMacSystemFont,sans-serif;
+      --font-body:'Inter',-apple-system,BlinkMacSystemFont,sans-serif
+    }
+    html{scroll-behavior:smooth}
+    body{font-family:var(--font-body);color:var(--text);background:var(--bg);line-height:1.6;-webkit-font-smoothing:antialiased}
+    .container{max-width:1140px;margin:0 auto;padding:0 24px}
+    .section{padding:100px 0}
+    .section-label{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:var(--primary);margin-bottom:12px}
+    .section-title{font-family:var(--font-heading);font-size:40px;font-weight:800;text-align:center;margin-bottom:12px;letter-spacing:-0.5px;line-height:1.15}
+    .section-sub{text-align:center;color:var(--text-secondary);font-size:17px;max-width:600px;margin:0 auto 48px;line-height:1.7}
+    .gradient-text{background:linear-gradient(135deg,var(--primary),var(--primary-light));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+    a{text-decoration:none;color:inherit}
+    img{max-width:100%;height:auto}
+
+    nav{display:flex;justify-content:space-between;align-items:center;padding:16px 24px;max-width:1140px;margin:0 auto;position:sticky;top:0;z-index:100;background:rgba(0,0,0,0.75);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,0.06)}
+    .logo{display:flex;align-items:center;gap:10px;font-family:var(--font-heading);font-size:21px;font-weight:800;color:var(--text);letter-spacing:-0.5px}
+    .logo .mark{width:36px;height:36px;background:linear-gradient(135deg,var(--primary),var(--primary-dark));border-radius:10px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:15px;font-weight:700}
+    .logo span{color:var(--primary)}
+    .nav-links{display:flex;align-items:center;gap:4px}
+    .nav-links a{padding:8px 16px;color:var(--text-secondary);font-weight:500;font-size:14px;transition:var(--transition);border-radius:var(--radius-sm)}
+    .nav-links a:hover{color:var(--text);background:rgba(255,255,255,0.04)}
+    .nav-links .btn-nav{background:linear-gradient(135deg,var(--primary),var(--primary-dark));color:#fff;padding:10px 22px;border-radius:var(--radius-sm);font-weight:600;box-shadow:0 4px 16px rgba(99,102,241,0.25)}
+    .nav-links .btn-nav:hover{transform:translateY(-1px);box-shadow:0 6px 24px rgba(99,102,241,0.35)}
+    .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;background:none;border:none;z-index:101}
+    .hamburger span{width:24px;height:2px;background:var(--text);border-radius:2px;transition:var(--transition)}
+
+    .btn{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;border-radius:var(--radius-sm);font-weight:600;font-size:15px;cursor:pointer;border:none;transition:var(--transition);text-decoration:none;font-family:var(--font-body)}
+    .btn-primary{background:linear-gradient(135deg,var(--primary),var(--primary-dark));color:#fff;box-shadow:0 4px 16px rgba(99,102,241,0.25)}
+    .btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(99,102,241,0.35)}
+    .btn-secondary{background:transparent;color:var(--text);border:1px solid var(--border)}
+    .btn-secondary:hover{border-color:var(--primary);color:var(--primary);background:rgba(99,102,241,0.04)}
+    .btn-white{background:#fff;color:#000}
+    .btn-white:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,0.12)}
+    .btn-lg{padding:16px 36px;font-size:17px}
+
+    .hero{min-height:90vh;display:flex;align-items:center;position:relative;overflow:hidden;padding:120px 0 80px}
+    .hero-bg{position:absolute;inset:0;z-index:0}
+    .hero-bg img{width:100%;height:100%;object-fit:cover}
+    .hero-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0.75) 0%,rgba(0,0,0,0.85) 50%,#000 100%);z-index:1}
+    .hero-grid-overlay{position:absolute;inset:0;background-image:linear-gradient(rgba(99,102,241,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(99,102,241,0.04) 1px,transparent 1px);background-size:60px 60px;z-index:1;pointer-events:none}
+    .hero-content{position:relative;z-index:2;text-align:center;max-width:850px;margin:0 auto}
+    .hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(99,102,241,0.15);border:1px solid rgba(99,102,241,0.25);border-radius:100px;padding:8px 20px;font-size:13px;font-weight:600;color:var(--primary-light);margin-bottom:24px;backdrop-filter:blur(10px)}
+    .hero h1{font-family:var(--font-heading);font-size:56px;line-height:1.08;font-weight:900;letter-spacing:-1.5px;margin-bottom:20px}
+    .hero p{font-size:18px;color:var(--text-secondary);max-width:600px;margin:0 auto 28px;line-height:1.7}
+    .hero-buttons{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+    .hero-social{display:flex;align-items:center;justify-content:center;gap:12px;margin-top:36px;flex-wrap:wrap;font-size:14px;color:var(--text-secondary)}
+    .hero-social .avatars{display:flex}
+    .hero-social .avatars span{width:36px;height:36px;border-radius:50%;border:2px solid #000;margin-left:-8px;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;color:#fff}
+    .hero-social .avatars span:first-child{margin-left:0}
+    .hero-social .avatars .a1{background:#4f46e5}
+    .hero-social .avatars .a2{background:#0891b2}
+    .hero-social .avatars .a3{background:#d97706}
+    .hero-social .avatars .a4{background:#059669}
+    .hero-social .avatars .a5{background:#dc2626;font-size:10px}
+    .hero-trust{display:flex;justify-content:center;gap:24px;margin-top:24px;font-size:13px;color:var(--text-muted);flex-wrap:wrap}
+    .hero-trust span{display:flex;align-items:center;gap:6px}
+    .hero-trust span i{color:var(--primary)}
+
+    .steps-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-top:48px}
+    .step-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:32px 24px;text-align:center;transition:var(--transition);position:relative}
+    .step-card:hover{transform:translateY(-4px);border-color:var(--primary);box-shadow:0 0 30px rgba(99,102,241,0.06);background:var(--bg-card-hover)}
+    .step-card .step-num{position:absolute;top:-12px;left:50%;transform:translateX(-50%);width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,var(--primary),var(--primary-dark));color:#fff;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;font-family:var(--font-heading);box-shadow:0 0 20px rgba(99,102,241,0.3)}
+    .step-icon{width:56px;height:56px;border-radius:14px;background:rgba(99,102,241,0.1);display:flex;align-items:center;justify-content:center;font-size:22px;color:var(--primary);margin:8px auto 16px}
+    .step-card h3{font-family:var(--font-heading);font-size:17px;margin-bottom:8px}
+    .step-card p{font-size:14px;color:var(--text-secondary);line-height:1.7}
+
+    .features-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:48px}
+    .feature-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:32px 24px;text-align:center;transition:var(--transition)}
+    .feature-card:hover{transform:translateY(-4px);border-color:var(--border-hover);background:var(--bg-card-hover)}
+    .feature-card .icon{width:56px;height:56px;border-radius:14px;background:rgba(99,102,241,0.1);display:flex;align-items:center;justify-content:center;font-size:22px;color:var(--primary);margin:0 auto 16px}
+    .feature-card h3{font-family:var(--font-heading);font-size:17px;margin-bottom:8px}
+    .feature-card p{color:var(--text-secondary);font-size:14px;line-height:1.7}
+
+    .pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;max-width:1000px;margin:48px auto 0}
+    .pricing-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:36px 28px;text-align:center;transition:var(--transition);position:relative;display:flex;flex-direction:column}
+    .pricing-card:hover{transform:translateY(-4px);border-color:var(--primary);box-shadow:var(--shadow-primary);background:var(--bg-card-hover)}
+    .pricing-card.featured{border-color:var(--primary);box-shadow:0 0 40px rgba(99,102,241,0.1)}
+    .pricing-badge{position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:linear-gradient(135deg,var(--primary),var(--primary-dark));color:#fff;padding:6px 20px;border-radius:100px;font-size:12px;font-weight:700}
+    .pricing-card h3{font-size:22px;margin-bottom:8px;font-family:var(--font-heading)}
+    .pricing-card .price{font-size:44px;font-weight:900;margin:16px 0;font-family:var(--font-heading)}
+    .pricing-card .price span{font-size:16px;font-weight:400;color:var(--text-muted)}
+    .pricing-card .perks{font-size:13px;color:var(--primary);margin-bottom:16px;font-weight:600}
+    .pricing-card ul{text-align:left;margin:0 0 24px;list-style:none;flex:1}
+    .pricing-card li{padding:10px 0;font-size:14px;color:var(--text-secondary);display:flex;align-items:center;gap:10px;border-bottom:1px solid var(--border)}
+    .pricing-card li:last-child{border:none}
+    .pricing-card li i{color:var(--primary);font-size:12px;width:16px;text-align:center}
+
+    .testimonials-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+    .t-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:28px;transition:var(--transition)}
+    .t-card:hover{border-color:var(--primary);box-shadow:var(--shadow-primary);background:var(--bg-card-hover)}
+    .t-card .stars{color:#f59e0b;font-size:14px;margin-bottom:10px;letter-spacing:2px}
+    .t-card p{color:var(--text-secondary);font-size:14px;line-height:1.7;margin-bottom:16px;font-style:italic}
+    .t-card .author{font-weight:700;font-size:14px;display:flex;align-items:center;gap:10px}
+    .t-card .author .avatar{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,var(--primary),var(--primary-dark));display:flex;align-items:center;justify-content:center;color:#fff;font-size:14px;font-weight:700;flex-shrink:0}
+    .t-card .role{font-size:12px;color:var(--text-muted);margin-top:2px}
+
+    .faq-container{max-width:700px;margin:48px auto 0}
+    .faq-item{border:1px solid var(--border);border-radius:var(--radius);margin-bottom:8px;overflow:hidden;background:var(--bg-card);transition:var(--transition)}
+    .faq-item:hover{border-color:var(--primary)}
+    .faq-item.active{border-color:var(--primary)}
+    .faq-question{width:100%;padding:18px 20px;display:flex;justify-content:space-between;align-items:center;background:none;border:none;font-size:15px;font-weight:600;color:var(--text);cursor:pointer;text-align:left;font-family:var(--font-body)}
+    .faq-question i{font-size:14px;color:var(--text-muted);transition:var(--transition)}
+    .faq-item.active .faq-question i{transform:rotate(180deg);color:var(--primary)}
+    .faq-answer{max-height:0;overflow:hidden;transition:max-height 0.3s ease}
+    .faq-item.active .faq-answer{max-height:300px}
+    .faq-answer p{padding:0 20px 18px;font-size:14px;color:var(--text-secondary);line-height:1.7}
+
+    .signup-section{background:linear-gradient(135deg,#050505,#000);border-top:1px solid var(--border);border-bottom:1px solid var(--border);position:relative;overflow:hidden}
+    .signup-section::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(99,102,241,0.06) 0%,transparent 70%);pointer-events:none}
+    .signup-wrap{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;position:relative;z-index:1}
+    .signup-left h2{font-family:var(--font-heading);font-size:36px;font-weight:800;margin-bottom:16px;letter-spacing:-0.5px;line-height:1.15}
+    .signup-left p{color:var(--text-secondary);font-size:16px;line-height:1.7;margin-bottom:20px}
+    .signup-left .benefits{list-style:none}
+    .signup-left .benefits li{display:flex;align-items:center;gap:10px;padding:8px 0;font-size:14px;color:var(--text-secondary)}
+    .signup-left .benefits li i{color:var(--primary);font-size:14px}
+    .signup-form{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-xl);padding:36px}
+    .signup-form h3{font-family:var(--font-heading);font-size:20px;margin-bottom:6px;text-align:center}
+    .signup-form .form-sub{text-align:center;color:var(--text-muted);font-size:13px;margin-bottom:24px}
+    .form-group{margin-bottom:16px}
+    .form-group label{display:block;font-size:13px;font-weight:600;color:var(--text-secondary);margin-bottom:6px}
+    .form-group input,.form-group select{width:100%;padding:12px 14px;background:var(--bg);border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--text);font-size:14px;font-family:var(--font-body);transition:var(--transition);outline:none}
+    .form-group input:focus,.form-group select:focus{border-color:var(--primary);box-shadow:0 0 0 3px rgba(99,102,241,0.1)}
+    .form-group input::placeholder{color:var(--text-muted)}
+    .form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    .signup-form .btn{width:100%;justify-content:center;margin-top:8px;padding:14px}
+    .signup-form .login-link{text-align:center;margin-top:16px;font-size:13px;color:var(--text-muted)}
+    .signup-form .login-link a{color:var(--primary);font-weight:600}
+    .signup-form .login-link a:hover{text-decoration:underline}
+    .signup-form .disclaimer{text-align:center;margin-top:12px;font-size:11px;color:var(--text-muted);line-height:1.5}
+
+    .cta-section{text-align:center;padding:80px 24px;position:relative;overflow:hidden}
+    .cta-section::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(99,102,241,0.06) 0%,transparent 70%);pointer-events:none}
+    .cta-section h2{font-size:36px;font-weight:800;margin-bottom:12px;letter-spacing:-0.5px;font-family:var(--font-heading);position:relative;z-index:1}
+    .cta-section p{color:var(--text-secondary);max-width:550px;margin:0 auto 28px;font-size:16px;position:relative;z-index:1}
+    .cta-section .btn{position:relative;z-index:1}
+
+    footer{background:#050505;border-top:1px solid var(--border);padding:60px 0 0}
+    .footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:40px;max-width:1140px;margin:0 auto;padding:0 24px}
+    .footer-grid h4{color:var(--text);font-size:13px;font-weight:700;margin-bottom:16px;text-transform:uppercase;letter-spacing:1px}
+    .footer-grid a{display:block;color:var(--text-muted);font-size:14px;padding:5px 0;transition:var(--transition)}
+    .footer-grid a:hover{color:var(--primary)}
+    .footer-grid p{font-size:14px;line-height:1.7;margin-top:12px;color:var(--text-muted)}
+    .footer-bottom{text-align:center;padding:24px;margin-top:48px;border-top:1px solid var(--border);font-size:13px;color:var(--text-muted);max-width:1140px;margin-left:auto;margin-right:auto}
+    .footer-bottom a{color:var(--primary);font-weight:600}
+    .footer-bottom a:hover{text-decoration:underline}
+
+    [data-animate]{opacity:0;transform:translateY(30px);transition:opacity 0.7s ease,transform 0.7s ease}
+    [data-animate].visible{opacity:1;transform:translateY(0)}
+    [data-animate=fade-left]{transform:translateX(-30px)}
+    [data-animate=fade-left].visible{transform:translateX(0)}
+    [data-animate=fade-right]{transform:translateX(30px)}
+    [data-animate=fade-right].visible{transform:translateX(0)}
+    [data-animate=scale]{transform:scale(0.9)}
+    [data-animate=scale].visible{transform:scale(1)}
+
+    ::-webkit-scrollbar{width:8px}
+    ::-webkit-scrollbar-track{background:#000}
+    ::-webkit-scrollbar-thumb{background:#333;border-radius:4px}
+    ::-webkit-scrollbar-thumb:hover{background:#555}
+
+    @media(max-width:1024px){
+      .steps-grid,.features-grid,.testimonials-grid{grid-template-columns:repeat(2,1fr)}
+      .pricing-grid{grid-template-columns:1fr;max-width:400px}
+      .hero h1{font-size:44px}
+      .signup-wrap{grid-template-columns:1fr;gap:40px}
+    }
+    @media(max-width:768px){
+      .section{padding:60px 0}
+      .section-title{font-size:28px}
+      .hero{min-height:auto;padding:100px 0 60px}
+      .hero h1{font-size:32px}
+      .hero p{font-size:16px}
+      .hamburger{display:flex}
+      .nav-links{display:none;position:absolute;top:72px;left:0;right:0;background:rgba(0,0,0,0.95);flex-direction:column;padding:16px 24px;border-bottom:1px solid var(--border);backdrop-filter:blur(20px)}
+      .nav-links.open{display:flex}
+      .nav-links a{margin:4px 0;padding:12px 16px}
+      .steps-grid,.features-grid,.testimonials-grid{grid-template-columns:1fr}
+      .footer-grid{grid-template-columns:1fr 1fr}
+      .signup-form{padding:24px}
+      .form-row{grid-template-columns:1fr}
+    }
+    @media(max-width:480px){
+      .hero h1{font-size:26px}
+      .hero-buttons .btn{width:100%;justify-content:center}
+      .footer-grid{grid-template-columns:1fr}
+    }
+  </style>
+  <script type="application/ld+json">{
+    "@context":"https://schema.org",
+    "@type":"WebSite",
+    "name":"9amLeads — Government Tenders",
+    "url":"https://tenders.9amleads.com",
+    "description":"Government tenders matched to your business and delivered at 9am every morning."
+  }</script>
+</head>
+<body>
+  <div style="background:#0a0a0a;border-bottom:1px solid rgba(255,255,255,0.06);padding:7px 0;font-size:11px;text-align:center;font-family:Arial,sans-serif;">
+    <span style="color:#888">Part of </span>
+    <a href="/" style="color:#0ea5e9;font-weight:600">9amLeads</a>
+    <span style="color:#555;margin:0 6px">|</span>
+    <a href="/movingleadsdaily/" style="color:#888;text-decoration:none">Moving</a>
+    <span style="color:#444;margin:0 4px">·</span>
+    <a href="/probateleads/" style="color:#888;text-decoration:none">Probate</a>
+    <span style="color:#444;margin:0 4px">·</span>
+    <a href="/newbusinessalert/" style="color:#888;text-decoration:none">New Business</a>
+    <span style="color:#444;margin:0 4px">·</span>
+    <a href="/planningleads/" style="color:#888;text-decoration:none">Planning</a>
+    <span style="color:#444;margin:0 4px">·</span>
+    <a href="/tenders/" style="color:#888;text-decoration:none">Tenders</a>
+  </div>
+  <nav>
+    <a href="/tenders/" class="logo"><div class="mark">9</div>
+<div style="text-align:center;padding:12px 24px;font-size:11px;color:#555;border-top:1px solid #1a1a1a">9am Leads Ltd &middot; Company No. 17168176 &middot; hello@9amleads.com</div>am<span>Leads</span> <span style="font-weight:400;color:var(--text-muted);font-size:14px">Tenders</span></a>
+    <div class="nav-links" id="navLinks">
+      <a href="#how">How It Works</a>
+      <a href="#features">Features</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#testimonials">Testimonials</a>
+      <a href="#faq">FAQ</a>
+      <a href="#signup" class="btn-nav"><i class="fas fa-bolt"></i> Start Free Trial</a>
+    </div>
+    <button class="hamburger" onclick="document.getElementById('navLinks').classList.toggle('open')" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+  </nav>
+
+  <section class="hero">
+    <div class="hero-bg">
+      <img src="https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=1600&q=80" alt="Government building" loading="lazy">
+    </div>
+    <div class="hero-overlay"></div>
+    <div class="hero-grid-overlay"></div>
+    <div class="container hero-content">
+      <div class="hero-badge" style="background:rgba(34,197,94,.1)!important;border-color:rgba(34,197,94,.2)!important;color:#22c55e!important"><i class="fas fa-gift"></i> Free Trial — Thousands of Pounds Worth of Leads, Totally Free</div>
+      <div style="display:flex;justify-content:center;gap:6px;flex-wrap:wrap;margin-bottom:12px">
+        <span style="display:inline-flex;align-items:center;gap:4px;padding:4px 10px;border-radius:100px;font-size:11px;font-weight:600;background:rgba(34,197,94,.08);color:#22c55e;border:1px solid rgba(34,197,94,.15)"><i class="fas fa-check"></i> 7 days free</span>
+        <span style="display:inline-flex;align-items:center;gap:4px;padding:4px 10px;border-radius:100px;font-size:11px;font-weight:600;background:rgba(34,197,94,.08);color:#22c55e;border:1px solid rgba(34,197,94,.15)"><i class="fas fa-check"></i> No card required</span>
+        <span style="display:inline-flex;align-items:center;gap:4px;padding:4px 10px;border-radius:100px;font-size:11px;font-weight:600;background:rgba(34,197,94,.08);color:#22c55e;border:1px solid rgba(34,197,94,.15)"><i class="fas fa-check"></i> Cancel anytime</span>
+      </div>
+      <h1>Government Tenders<br>Matched to Your Business.<br><span class="gradient-text">Delivered at 9am.</span></h1>
+      <p>Never miss a contract opportunity. Every public sector tender over £10k is scanned, matched to your business, and sent to your inbox — before your competitors even start searching.</p>
+      <div class="hero-buttons">
+        <a href="#signup" class="btn btn-primary btn-lg"><i class="fas fa-bolt"></i> Start Free Trial</a>
+        <a href="#how" class="btn btn-secondary btn-lg"><i class="fas fa-play-circle"></i> See How It Works</a>
+      </div>
+      <div class="hero-social">
+        <div class="avatars">
+          <span class="a1">DC</span>
+          <span class="a2">ST</span>
+          <span class="a3">JW</span>
+          <span class="a4">LP</span>
+          <span class="a5">+</span>
+        </div>
+        <span><strong style="color:var(--text)">Join 150+</strong> UK businesses winning government contracts</span>
+      </div>
+      <div class="hero-trust">
+        <span><i class="fas fa-check-circle"></i> Official Contracts Finder API</span>
+        <span><i class="fas fa-check-circle"></i> No long-term contract</span>
+        <span><i class="fas fa-check-circle"></i> Cancel anytime</span>
+        <span><i class="fas fa-check-circle"></i> 7-day free trial</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="how" style="position:relative;overflow:hidden">
+    <div style="position:absolute;inset:0;opacity:.07;background-image:url('https://images.unsplash.com/photo-1552664730-d307ca884978?w=1200&q=80');background-size:cover;background-position:center;pointer-events:none"></div>
+    <div class="container" style="position:relative;z-index:2">
+      <div class="section-label">Your Daily Routine</div>
+      <h2 class="section-title">How It <span class="gradient-text">Works</span></h2>
+      <p class="section-sub">Four simple steps to start winning public sector contracts. No complicated portals, no wasted time.</p>
+      <div class="steps-grid">
+        <div class="step-card" data-animate><div class="step-num">1</div><div class="step-icon"><i class="fas fa-sliders-h"></i></div><h3>Set Your Filters</h3><p>Tell us what you do — choose keywords, locations, and contract value ranges that match your business exactly.</p></div>
+        <div class="step-card" data-animate><div class="step-num">2</div><div class="step-icon"><i class="fas fa-sync-alt"></i></div><h3>We Scan at 5am</h3><p>Every morning our system scans Contracts Finder and all UK public sector procurement portals for new opportunities.</p></div>
+        <div class="step-card" data-animate><div class="step-num">3</div><div class="step-icon"><i class="fas fa-envelope-open-text"></i></div><h3>Leads Arrive at 9am</h3><p>A curated lead sheet lands in your inbox — tender titles, authorities, values, and deadlines. Everything you need to decide.</p></div>
+        <div class="step-card" data-animate><div class="step-num">4</div><div class="step-icon"><i class="fas fa-file-signature"></i></div><h3>Submit Your Bid</h3><p>Open the tender, prepare your response, and submit before the deadline. Your pipeline builds itself.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="features" style="background:#050505;border-top:1px solid var(--border);border-bottom:1px solid var(--border);position:relative;overflow:hidden">
+    <div style="position:absolute;inset:0;opacity:.07;background-image:url('https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=1200&q=80');background-size:cover;background-position:center;pointer-events:none"></div>
+    <div class="container" style="position:relative;z-index:2">
+      <div class="section-label">Everything You Need</div>
+      <h2 class="section-title">Built to Help You <span class="gradient-text">Win Contracts</span></h2>
+      <p class="section-sub">Every feature designed to save you time and put the best opportunities in front of you — automatically.</p>
+      <div class="features-grid">
+        <div class="feature-card" data-animate><div class="icon"><i class="fas fa-clock"></i></div><h3>9am Delivery</h3><p>Your daily tender list arrives at 9am sharp. Start every morning with a fresh pipeline of matched opportunities. Consistency you can rely on.</p></div>
+        <div class="feature-card" data-animate><div class="icon"><i class="fas fa-tags"></i></div><h3>Keyword Matching</h3><p>Choose from pre-built categories or enter custom keywords. Our engine scans tender titles, descriptions, and CPV codes for exact matches.</p></div>
+        <div class="feature-card" data-animate><div class="icon"><i class="fas fa-map-marker-alt"></i></div><h3>Location Filters</h3><p>Filter by region, county, city, or postcode. Cover the whole UK or focus on specific areas where you can deliver.</p></div>
+        <div class="feature-card" data-animate><div class="icon"><i class="fas fa-pound-sign"></i></div><h3>Value Range</h3><p>Set minimum and maximum contract values. Focus on £1M+ opportunities or target smaller £10k–£100k contracts. You decide.</p></div>
+        <div class="feature-card" data-animate><div class="icon"><i class="fas fa-chart-bar"></i></div><h3>Dashboard</h3><p>Track your entire tender pipeline in one place. View by status, value, location, and category. Know where you stand at all times.</p></div>
+        <div class="feature-card" data-animate><div class="icon"><i class="fas fa-bell"></i></div><h3>Deadline Alerts</h3><p>Never miss a deadline. Get reminders for upcoming tender closings. Filter by urgency and plan your bid calendar weeks ahead.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="background:linear-gradient(135deg,rgba(99,102,241,.03),rgba(14,165,233,.03));border-top:1px solid var(--border);border-bottom:1px solid var(--border);position:relative;overflow:hidden" id="industries">
+    <div style="position:absolute;inset:0;opacity:.07;background-image:url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1200&q=80');background-size:cover;background-position:center;pointer-events:none"></div>
+    <div class="container" style="position:relative;z-index:2">
+      <div class="section-label">Who Can Use This</div>
+      <h2 class="section-title">Every Business That Sells to <span class="gradient-text">the Public Sector</span></h2>
+      <p class="section-sub">Hundreds of different businesses win government contracts every day. If you provide any of these services, there are tenders waiting for you.</p>
+      <div class="features-grid">
+        <div class="feature-card" data-animate style="border-left:3px solid #6366f1"><div class="icon" style="background:rgba(99,102,241,.1);color:#6366f1"><i class="fas fa-laptop-code"></i></div><h3>IT &amp; Technology</h3><p>Software development, IT support, cybersecurity, cloud migration, telecoms, and web development. The government spends billions on tech every year — and they need suppliers like you.</p></div>
+        <div class="feature-card" data-animate style="border-left:3px solid #f97316"><div class="icon" style="background:rgba(249,115,22,.1);color:#f97316"><i class="fas fa-hard-hat"></i></div><h3>Construction &amp; Maintenance</h3><p>Building contractors, refurbishment specialists, roofing, electrical, plumbing, HVAC, painting, and general maintenance. Every council, school, and hospital needs ongoing building work.</p></div>
+        <div class="feature-card" data-animate style="border-left:3px solid #22c55e"><div class="icon" style="background:rgba(34,197,94,.1);color:#22c55e"><i class="fas fa-broom"></i></div><h3>Cleaning &amp; Janitorial</h3><p>Office cleaning, commercial cleaning, window cleaning, waste management, and hygiene services. Government buildings always need cleaning — contracts are often 2-5 years long.</p></div>
+        <div class="feature-card" data-animate style="border-left:3px solid #f59e0b"><div class="icon" style="background:rgba(245,158,11,.1);color:#f59e0b"><i class="fas fa-utensils"></i></div><h3>Catering &amp; Hospitality</h3><p>School meals, hospital catering, event catering, vending services, and staff canteens. The NHS and education sector alone spend hundreds of millions on food services annually.</p></div>
+        <div class="feature-card" data-animate style="border-left:3px solid #06b6d4"><div class="icon" style="background:rgba(6,182,212,.1);color:#06b6d4"><i class="fas fa-chart-line"></i></div><h3>Consultancy</h3><p>Management consulting, business strategy, HR consulting, financial advisory, and transformation projects. Central government departments regularly tender for specialist consultancy partners.</p></div>
+        <div class="feature-card" data-animate style="border-left:3px solid #1e40af"><div class="icon" style="background:rgba(30,64,175,.1);color:#60a5fa"><i class="fas fa-shield-alt"></i></div><h3>Security Services</h3><p>Manned guarding, CCTV installation, alarm monitoring, cyber security, and access control. Public buildings, transport hubs, and government estates all require security.</p></div>
+        <div class="feature-card" data-animate style="border-left:3px solid #8b5cf6"><div class="icon" style="background:rgba(139,92,246,.1);color:#8b5cf6"><i class="fas fa-building"></i></div><h3>Facilities Management</h3><p>Building maintenance, grounds maintenance, pest control, energy management, and waste disposal. Integrated FM contracts can be worth £5M–£50M+ over their term.</p></div>
+        <div class="feature-card" data-animate style="border-left:3px solid #ec4899"><div class="icon" style="background:rgba(236,72,153,.1);color:#ec4899"><i class="fas fa-print"></i></div><h3>Printing &amp; Stationery</h3><p>Print management, office supplies, promotional materials, and document management. Every government office needs stationery and printing — these are high-volume, recurring contracts.</p></div>
+        <div class="feature-card" data-animate style="border-left:3px solid #14b8a6"><div class="icon" style="background:rgba(20,184,166,.1);color:#14b8a6"><i class="fas fa-truck-moving"></i></div><h3>Transport &amp; Logistics</h3><p>Courier services, fleet management, vehicle maintenance, courier services, and logistics planning. NHS logistics, school transport, and council fleet maintenance are all tendered.</p></div>
+        <div class="feature-card" data-animate style="border-left:3px solid #ef4444"><div class="icon" style="background:rgba(239,68,68,.1);color:#ef4444"><i class="fas fa-heartbeat"></i></div><h3>Healthcare &amp; Medical</h3><p>Medical equipment, care services, nursing agencies, PPE supplies, and healthcare consultancy. The NHS is the largest employer in the UK — their procurement needs are endless.</p></div>
+        <div class="feature-card" data-animate style="border-left:3px solid #0ea5e9"><div class="icon" style="background:rgba(14,165,233,.1);color:#0ea5e9"><i class="fas fa-graduation-cap"></i></div><h3>Training &amp; Education</h3><p>Vocational training, e-learning platforms, apprenticeships, professional development, and compliance training. Skills funding and apprenticeship schemes are government priorities.</p></div>
+        <div class="feature-card" data-animate style="border-left:3px solid #f43f5e"><div class="icon" style="background:rgba(244,63,94,.1);color:#f43f5e"><i class="fas fa-ad"></i></div><h3>Marketing &amp; PR</h3><p>Digital marketing, SEO, web development, social media management, graphic design, and PR campaigns. Government departments run public awareness campaigns worth £1M–£20M.</p></div>
+        <div class="feature-card" data-animate style="border-left:3px solid #a855f7"><div class="icon" style="background:rgba(168,85,247,.1);color:#a855f7"><i class="fas fa-gavel"></i></div><h3>Legal Services</h3><p>Solicitors, legal aid, contract law, employment law, and public inquiries. The Government Legal Department regularly tenders for external legal support across multiple practice areas.</p></div>
+        <div class="feature-card" data-animate style="border-left:3px solid #22c55e"><div class="icon" style="background:rgba(34,197,94,.1);color:#22c55e"><i class="fas fa-calculator"></i></div><h3>Financial Services</h3><p>Accounting, audit, payroll, insurance brokerage, and financial advisory. Every public body needs audited accounts — and they tender for them every year.</p></div>
+        <div class="feature-card" data-animate style="border-left:3px solid #f97316"><div class="icon" style="background:rgba(249,115,22,.1);color:#f97316"><i class="fas fa-users"></i></div><h3>HR &amp; Recruitment</h3><p>Temp staffing, permanent recruitment, HR outsourcing, payroll services, and executive search. Public sector recruitment frameworks cover everything from teaching to engineering.</p></div>
+        <div class="feature-card" data-animate style="border-left:3px solid #6366f1"><div class="icon" style="background:rgba(99,102,241,.1);color:#6366f1"><i class="fas fa-cogs"></i></div><h3>Engineering</h3><p>Civil engineering, structural engineering, mechanical engineering, electrical engineering, and design consultancy. Infrastructure projects are among the highest-value public contracts.</p></div>
+        <div class="feature-card" data-animate style="border-left:3px solid #10b981"><div class="icon" style="background:rgba(16,185,129,.1);color:#10b981"><i class="fas fa-leaf"></i></div><h3>Environmental Services</h3><p>Waste recycling, sustainability consulting, energy efficiency, carbon reduction, and ecological surveys. Net zero targets mean huge tender volumes in the environmental sector.</p></div>
+        <div class="feature-card" data-animate style="border-left:3px solid #6366f1"><div class="icon" style="background:rgba(99,102,241,.1);color:#6366f1"><i class="fas fa-briefcase"></i></div><h3>Any B2B Service</h3><p>If you sell any product or service to the public sector, there are tenders for you. From office furniture to tree surgery, translation services to event management.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="pricing" style="position:relative;overflow:hidden">
+    <div style="position:absolute;inset:0;opacity:.07;background-image:url('https://images.unsplash.com/photo-1521791136064-2b8711a1cfb9?w=1200&q=80');background-size:cover;background-position:center;pointer-events:none"></div>
+    <div class="container" style="position:relative;z-index:2">
+      <div class="section-label">Simple Pricing</div>
+      <h2 class="section-title">Plans for Every <span class="gradient-text">Size of Business</span></h2>
+      <p class="section-sub">No hidden fees. No long-term contracts. Cancel anytime. Start with a 7-day free trial — no credit card required.</p>
+      <div class="pricing-grid">
+        <div class="pricing-card" data-animate="scale">
+          <h3>Essential</h3>
+          <div class="price">£79<span>/mo</span></div>
+          <div class="perks">1 keyword category</div>
+          <ul>
+            <li><i class="fas fa-check"></i> 1 keyword category (e.g. IT)</li>
+            <li><i class="fas fa-check"></i> Up to 3 locations</li>
+            <li><i class="fas fa-check"></i> 100+ tenders/month</li>
+            <li><i class="fas fa-check"></i> Daily 9am email delivery</li>
+            <li><i class="fas fa-check"></i> Contract value filtering</li>
+            <li><i class="fas fa-check"></i> Dashboard access</li>
+            <li><i class="fas fa-check"></i> Email support</li>
+          </ul>
+          <a href="#signup" class="btn btn-primary" style="width:100%;justify-content:center">Start Free Trial</a>
+        </div>
+        <div class="pricing-card featured" data-animate="scale">
+          <div class="pricing-badge">★ Most Popular</div>
+          <h3>Pro</h3>
+          <div class="price">£147<span>/mo</span></div>
+          <div class="perks">3 keyword categories</div>
+          <ul>
+            <li><i class="fas fa-check"></i> 3 keyword categories</li>
+            <li><i class="fas fa-check"></i> Unlimited locations</li>
+            <li><i class="fas fa-check"></i> 500+ tenders/month</li>
+            <li><i class="fas fa-check"></i> Daily 9am email delivery</li>
+            <li><i class="fas fa-check"></i> CPV code filtering</li>
+            <li><i class="fas fa-check"></i> Dashboard + analytics</li>
+            <li><i class="fas fa-check"></i> Priority email &amp; phone support</li>
+            <li><i class="fas fa-check"></i> SMS alerts for urgent tenders</li>
+          </ul>
+          <a href="#signup" class="btn btn-primary" style="width:100%;justify-content:center">Start Free Trial</a>
+        </div>
+        <div class="pricing-card" data-animate="scale">
+          <h3>Enterprise</h3>
+          <div class="price">£297<span>/mo</span></div>
+          <div class="perks">Unlimited categories</div>
+          <ul>
+            <li><i class="fas fa-check"></i> Unlimited keyword categories</li>
+            <li><i class="fas fa-check"></i> Unlimited locations</li>
+            <li><i class="fas fa-check"></i> 1000+ tenders/month</li>
+            <li><i class="fas fa-check"></i> Daily 9am email delivery</li>
+            <li><i class="fas fa-check"></i> Full CPV &amp; OJEU filtering</li>
+            <li><i class="fas fa-check"></i> API access for CRM integration</li>
+            <li><i class="fas fa-check"></i> Dedicated account manager</li>
+            <li><i class="fas fa-check"></i> Team accounts (up to 5 users)</li>
+            <li><i class="fas fa-check"></i> Bid scorecard &amp; analytics</li>
+          </ul>
+          <a href="#signup" class="btn btn-primary" style="width:100%;justify-content:center">Start Free Trial</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="testimonials" style="background:#050505;border-top:1px solid var(--border);border-bottom:1px solid var(--border);position:relative;overflow:hidden">
+    <div style="position:absolute;inset:0;opacity:.07;background-image:url('https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=1200&q=80');background-size:cover;background-position:center;pointer-events:none"></div>
+    <div class="container" style="position:relative;z-index:2">
+      <div class="section-label">Social Proof</div>
+      <h2 class="section-title">Trusted by UK <span class="gradient-text">Businesses</span></h2>
+      <p class="section-sub">See why 150+ UK businesses rely on 9amLeads Tenders to find and win government contracts.</p>
+      <div class="testimonials-grid">
+        <div class="t-card" data-animate>
+          <div class="stars">★★★★★</div>
+          <p>"We were spending hours manually searching Contracts Finder every week. Now the tenders come to us at 9am on the dot. Won a £450k IT contract in our first month."</p>
+          <div class="author"><span class="avatar">DC</span><div>David Chen<div class="role">MD, ChenTech Solutions · Birmingham</div></div></div>
+        </div>
+        <div class="t-card" data-animate>
+          <div class="stars">★★★★★</div>
+          <p>"The location filtering is a game-changer. We only see cleaning contracts in the North West between £50k and £500k. Our bid win rate has doubled because we're not wasting time on irrelevant tenders."</p>
+          <div class="author"><span class="avatar">ST</span><div>Sarah Thompson<div class="role">Ops Director, CleanServe UK · Manchester</div></div></div>
+        </div>
+        <div class="t-card" data-animate>
+          <div class="stars">★★★★★</div>
+          <p>"I was sceptical about another lead generation service, but this is different. It matches us to real government tenders that already exist. Paid for itself within two weeks of signing up."</p>
+          <div class="author"><span class="avatar">JW</span><div>James Wilson<div class="role">Director, Wilson Construction · Leeds</div></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="faq">
+    <div class="container">
+      <div class="section-label">FAQ</div>
+      <h2 class="section-title">Frequently Asked <span class="gradient-text">Questions</span></h2>
+      <p class="section-sub">Everything you need to know about 9amLeads Tenders.</p>
+      <div class="faq-container">
+        <div class="faq-item active"><button class="faq-question">Where does the tender data come from? <i class="fas fa-chevron-down"></i></button><div class="faq-answer"><p>All tender data is sourced directly from the official Gov.uk Contracts Finder API — the same database all UK government departments, local authorities, and public sector bodies use to publish contract opportunities over £10,000. We also supplement with data from other UK public sector procurement portals for maximum coverage.</p></div></div>
+        <div class="faq-item"><button class="faq-question">How does keyword matching work? <i class="fas fa-chevron-down"></i></button><div class="faq-answer"><p>You choose keyword categories (e.g. IT, construction, cleaning) or enter custom keywords. Our engine scans every new tender's title, description, and CPV codes for relevant matches. You can also filter by location, contract value range, and specific CPV codes for precision targeting.</p></div></div>
+        <div class="faq-item"><button class="faq-question">How many tenders will I receive each day? <i class="fas fa-chevron-down"></i></button><div class="faq-answer"><p>It depends on your sectors and coverage area. Most customers receive 15–50 matched tenders per day. A construction company covering the whole UK might see more, while a niche consultancy in one region might see fewer. You can always adjust your filters to get the right volume.</p></div></div>
+        <div class="faq-item"><button class="faq-question">Can I change my filters after signing up? <i class="fas fa-chevron-down"></i></button><div class="faq-answer"><p>Absolutely. You can update your keyword categories, locations, and value ranges at any time from your dashboard. Upgrade or downgrade your plan whenever you need more categories or coverage.</p></div></div>
+        <div class="faq-item"><button class="faq-question">Is there a free trial? <i class="fas fa-chevron-down"></i></button><div class="faq-answer"><p>Yes! Every plan comes with a 7-day free trial. You get full access to your chosen plan features for 7 days with no commitment. No credit card required. Cancel anytime during the trial and you won't be charged a penny.</p></div></div>
+        <div class="faq-item"><button class="faq-question">How do I actually bid on a tender? <i class="fas fa-chevron-down"></i></button><div class="faq-answer"><p>Each tender email includes a direct link to the full opportunity on Contracts Finder. From there you can download the tender documents and submit your bid through the official channels. We find and match the opportunities — you win the contracts.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section signup-section" id="signup">
+    <div style="position:absolute;inset:0;opacity:.07;background-image:url('https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=1200&q=80');background-size:cover;background-position:center;pointer-events:none"></div>
+    <div class="container signup-wrap">
+      <div class="signup-left">
+        <div class="section-label">Get Started</div>
+        <h2>Start Winning<br>Government Contracts <span class="gradient-text">Today</span></h2>
+        <p>Join 150+ UK businesses already using 9amLeads Tenders to grow their public sector pipeline. Start your 7-day free trial — no credit card required.</p>
+        <ul class="benefits">
+          <li><i class="fas fa-check-circle"></i> Matched opportunities delivered to your inbox at 9am daily</li>
+          <li><i class="fas fa-check-circle"></i> Smart keyword and location filtering — only relevant tenders</li>
+          <li><i class="fas fa-check-circle"></i> Track your pipeline with an easy-to-use dashboard</li>
+          <li><i class="fas fa-check-circle"></i> Deadline alerts so you never miss a submission</li>
+          <li><i class="fas fa-check-circle"></i> Cancel anytime — no long-term commitment</li>
+        </ul>
+      </div>
+      <div>
+        <form class="signup-form" id="signupForm" action="#" method="POST">
+          <h3>Start Your Free Trial</h3>
+          <p class="form-sub">7 days free · No credit card required · Cancel anytime</p>
+          <div class="form-group">
+            <label for="company">Company Name</label>
+            <input type="text" id="company" name="company" placeholder="e.g. Acme Ltd" required>
+          </div>
+          <div class="form-group">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="email" placeholder="you@company.co.uk" required>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="phone">Phone Number</label>
+              <input type="tel" id="phone" name="phone" placeholder="+44 7XXX XXXXXX" required>
+            </div>
+            <div class="form-group">
+              <label for="keywords">Keywords / Sector</label>
+              <input type="text" id="keywords" name="keywords" placeholder="e.g. IT, Construction" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="password">Create Password</label>
+            <input type="password" id="password" name="password" placeholder="Min. 8 characters" minlength="8" required>
+          </div>
+          <div style="margin:12px 0">
+            <label style="display:flex;align-items:flex-start;gap:10px;cursor:pointer;font-size:12px;color:var(--text-muted, #888);line-height:1.5">
+              <input type="checkbox" id="consent" required style="margin-top:3px;width:16px;height:16px;accent-color:#6366f1;flex-shrink:0">
+              I agree to receive daily lead emails at 9am and accept the <a href="/terms.html" target="_blank" style="color:#6366f1;text-decoration:underline">Terms of Service</a> and <a href="/privacy.html" target="_blank" style="color:#6366f1;text-decoration:underline">Privacy Policy</a>. I can unsubscribe anytime.
+            </label>
+          </div>
+          <button type="submit" class="btn btn-primary btn-lg" style="width:100%"><i class="fas fa-gift"></i> Claim Free Week — Start Trial</button>
+          <div style="margin-top:10px;font-size:11px;color:var(--muted2, #555);text-align:center;line-height:1.5"><i class="fas fa-lock" style="color:#6366f1"></i> Your data is secure. No spam. Unsubscribe anytime.</div>
+          <div class="login-link" style="margin-top:12px">Already have an account? <a href="dashboard.html">Log in</a></div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-section" style="position:relative;overflow:hidden">
+    <div style="position:absolute;inset:0;opacity:.07;background-image:url('https://images.unsplash.com/photo-1552664730-d307ca884978?w=1200&q=80');background-size:cover;background-position:center;pointer-events:none"></div>
+    <h2 style="position:relative;z-index:2">Ready to Never Miss a Contract Again?</h2>
+    <p style="position:relative;z-index:2">Join 150+ UK businesses already growing their public sector pipeline with 9amLeads Tenders.</p>
+    <a href="#signup" class="btn btn-primary btn-lg" style="position:relative;z-index:2"><i class="fas fa-bolt"></i> Start Your Free Trial</a>
+  </section>
+
+  <footer>
+    <div class="footer-grid">
+      <div>
+        <div class="logo" style="font-size:20px"><div class="mark">9</div>am<span>Leads</span></div>
+        <p>Government tenders matched to your business. Delivered at 9am every morning. Powered by the official Gov.uk Contracts Finder API.</p>
+      </div>
+      <div>
+        <h4>Pages</h4>
+        <a href="#how">How It Works</a>
+        <a href="#features">Features</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#testimonials">Testimonials</a>
+        <a href="#faq">FAQ</a>
+        <a href="#signup">Start Free Trial</a>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <p>Email: hello@9amleads.com<br>Phone: 020 1234 5678<br>Mon–Fri 9am–6pm</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      © 2026 9amLeads Tenders — Part of <a href="/">9amLeads</a>. Made in the UK.
+    </div>
+  </footer>
+
+  <script>
+    document.querySelectorAll('.faq-question').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        var item = this.parentElement;
+        var was = item.classList.contains('active');
+        item.parentElement.querySelectorAll('.faq-item').forEach(function(i) { i.classList.remove('active'); });
+        if (!was) item.classList.add('active');
+      });
+    });
+
+    var animObserver = new IntersectionObserver(function(entries) {
+      entries.forEach(function(e) {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          animObserver.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.15 });
+    document.querySelectorAll('[data-animate]').forEach(function(el) { animObserver.observe(el); });
+
+    document.getElementById('signupForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      var btn = this.querySelector('.btn');
+      var orig = btn.innerHTML;
+      btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Creating account...';
+      btn.disabled = true;
+      setTimeout(function() {
+        window.location.href = 'dashboard.html';
+      }, 1500);
+    });
+  </script>
+</body>
+</html>
