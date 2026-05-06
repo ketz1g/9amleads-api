@@ -1330,6 +1330,37 @@ app.get('/api/health', (req, res) => {
   });
 });
 
+// ===== WEBSITE ANALYTICS =====
+const analytics = { visits: [], pages: {} };
+
+app.post('/api/track', (req, res) => {
+  const { page, referrer } = req.body;
+  const ip = req.ip || req.headers['x-forwarded-for'] || 'unknown';
+  const visit = { page: page || '/', referrer: referrer || '', ip, time: Date.now(), ua: req.headers['user-agent'] || '' };
+  analytics.visits.push(visit);
+  if (analytics.visits.length > 10000) analytics.visits.splice(0, 5000);
+  if (!analytics.pages[visit.page]) analytics.pages[visit.page] = 0;
+  analytics.pages[visit.page]++;
+  res.json({ ok: true });
+});
+
+app.get('/api/analytics/live', (req, res) => {
+  const cutoff = Date.now() - 5 * 60 * 1000;
+  const live = analytics.visits.filter(v => v.time > cutoff);
+  const uniqueIps = new Set(live.map(v => v.ip));
+  res.json({ live: uniqueIps.size, visits5min: live.length, total: analytics.visits.length });
+});
+
+app.get('/api/analytics/pages', (req, res) => {
+  const sorted = Object.entries(analytics.pages).sort((a, b) => b[1] - a[1]).slice(0, 20);
+  res.json(sorted.map(([page, count]) => ({ page, count })));
+});
+
+// Tracking snippet to inject into HTML pages
+const TRACKING_SNIPPET = `<script>
+(function(){var i=new Image();i.src='https://nineamleads-api.onrender.com/api/track?p='+encodeURIComponent(window.location.pathname)+'&r='+encodeURIComponent(document.referrer||'')})();
+</script>`;
+
 // ===== START SERVER =====
 app.listen(PORT, () => {
   console.log('\n========================================');
