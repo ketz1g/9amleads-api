@@ -27,17 +27,17 @@ const DB_FILE = path.join(DATA_DIR, 'database.json');
 fs.mkdirSync(DATA_DIR, { recursive: true });
 
 // ===== JSON DATABASE (drop-in replacement for better-sqlite3) =====
-let _db = null;
-function db() {
-  if (!_db) { _db = load(); save(); }
-  return _db;
+let _dbData = null;
+function getDb() {
+  if (!_dbData) { _dbData = loadDb(); saveDb(); }
+  return _dbData;
 }
-function load() {
+function loadDb() {
   try { return JSON.parse(fs.readFileSync(DB_FILE, 'utf-8')); }
   catch { return { customers: [], leads: [], deliveries: [], scraper_logs: [], subscriptions: [] }; }
 }
-function save() {
-  fs.writeFileSync(DB_FILE, JSON.stringify(_db, null, 2));
+function saveDb() {
+  fs.writeFileSync(DB_FILE, JSON.stringify(_dbData, null, 2));
 }
 function _q(sql, params) {
   // Parse SQL to determine operation
@@ -82,8 +82,8 @@ function _run(sql, params) {
       const vals = valsMatch[1].split(',').map(v => v.trim().replace(/'/g, ''));
       cols.forEach((c, i) => { row[c] = params[i] !== undefined ? params[i] : vals[i]; });
     }
-    if (row.id) db()[q.table].push(row);
-    save(); return { changes: 1 };
+    if (row.id) getDb()[q.table].push(row);
+    saveDb(); return { changes: 1 };
   }
   if (q.isUpdate) {
     const setMatch = sql.match(/SET\s+(.+?)(?:\s+WHERE|$)/i);
@@ -103,8 +103,8 @@ function _run(sql, params) {
       idVal = idVal || params[params.length - 1];
       const changes = {};
       sets.forEach((s, i) => { changes[s.key] = s.val.replace(/\?/g, params[i]); });
-      const idx = db()[q.table].findIndex(r => r[idField] == idVal);
-      if (idx !== -1) { db()[q.table][idx] = { ...db()[q.table][idx], ...changes }; save(); return { changes: 1 }; }
+      const idx = getDb()[q.table].findIndex(r => r[idField] == idVal);
+      if (idx !== -1) { getDb()[q.table][idx] = { ...getDb()[q.table][idx], ...changes }; saveDb(); return { changes: 1 }; }
     }
     return { changes: 0 };
   }
@@ -113,11 +113,11 @@ function _run(sql, params) {
 
 function _get(sql, params) {
   const q = _q(sql, params);
-  if (q.table && db()[q.table]) {
+  if (q.table && getDb()[q.table]) {
     // Handle simple WHERE field = ? queries
     const whereMatch = sql.match(/WHERE\s+(\w+)\s*=\s*\?/i);
     const orderMatch = sql.match(/ORDER\s+BY\s+(\w+)\s+(DESC|ASC)/i);
-    let results = db()[q.table];
+    let results = getDb()[q.table];
     if (whereMatch) {
       const field = whereMatch[1];
       const val = params[0];
@@ -132,8 +132,7 @@ function _get(sql, params) {
     if (sql.includes('COUNT(*)')) {
       return { count: results.length };
     }
-    // Handle LIMIT
-    const limitMatch = sql.match(/LIMIT\s+(\d+)/i);
+// Handle LIMIT
     if (limitMatch) results = results.slice(0, parseInt(limitMatch[1]));
     return results[0] || null;
   }
@@ -142,8 +141,8 @@ function _get(sql, params) {
 
 function _all(sql, params) {
   const q = _q(sql, params);
-  if (q.table && db()[q.table]) {
-    let results = db()[q.table];
+  if (q.table && getDb()[q.table]) {
+    let results = getDb()[q.table];
     // Handle WHERE field = ?
     const whereMatch = sql.match(/WHERE\s+(\w+)\s*=\s*\?/gi);
     if (whereMatch) {
