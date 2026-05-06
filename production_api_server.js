@@ -12,7 +12,6 @@ const express = require('express');
 const cors = require('cors');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-const Database = require('better-sqlite3');
 const path = require('path');
 const fs = require('fs');
 const { v4: uuidv4 } = require('uuid');
@@ -21,52 +20,172 @@ const cron = require('node-cron');
 // ===== CONFIG =====
 const PORT = process.env.PORT || process.env.API_PORT || 8012;
 const JWT_SECRET = process.env.JWT_SECRET || '9amleads-prod-secret-2026';
-const DB_PATH = process.env.DB_PATH || path.join(__dirname, 'data', '9amleads-prod.db');
 const DATA_DIR = path.join(__dirname, 'data');
+const DB_FILE = path.join(DATA_DIR, 'database.json');
 
 // Ensure data directory exists
 fs.mkdirSync(DATA_DIR, { recursive: true });
 
-// ===== DATABASE =====
-const db = new Database(DB_PATH);
-db.pragma('journal_mode = WAL');
-db.pragma('foreign_keys = ON');
-
+// ===== JSON DATABASE (drop-in replacement for better-sqlite3) =====
+let _db = null;
+function db() {
+  if (!_db) { _db = load(); save(); }
+  return _db;
+}
+function load() {
+  try { return JSON.parse(fs.readFileSync(DB_FILE, 'utf-8')); }
+  catch { return { customers: [], leads: [], deliveries: [], scraper_logs: [], subscriptions: [] }; }
+}
+function save() {
+  fs.writeFileSync(DB_FILE, JSON.stringify(_db, null, 2));
+}
 function _q(sql, params) {
-  try { return db.prepare(sql); } catch(e) { console.error('DB Error:', e.message); return null; }
+  // Parse SQL to determine operation
+  const isSelect = sql.trim().toUpperCase().startsWith('SELECT');
+  const isInsert = sql.trim().toUpperCase().startsWith('INSERT');
+  const isUpdate = sql.trim().toUpperCase().startsWith('UPDATE');
+  const isDelete = sql.trim().toUpperCase().startsWith('DELETE');
+  
+  // Extract table name
+  const tableMatch = sql.match(/(?:FROM|INTO|UPDATE|DELETE FROM)\s+(\w+)/i);
+  const table = tableMatch ? tableMatch[1] : null;
+  
+  return { table, isSelect, isInsert, isUpdate, isDelete, sql, params: params || [] };
 }
 
-// Create tables
-db.exec(`
-  CREATE TABLE IF NOT EXISTS customers (
-    id TEXT PRIMARY KEY, email TEXT UNIQUE NOT NULL, company TEXT NOT NULL, contact_name TEXT, phone TEXT,
-    password_hash TEXT NOT NULL, product TEXT NOT NULL DEFAULT 'moving', lead_type TEXT, business_type TEXT,
-    target_areas TEXT DEFAULT '[]', biz_field2 TEXT, biz_field3 TEXT, source TEXT DEFAULT 'direct',
-    plan TEXT DEFAULT 'free_trial', leads_per_day INTEGER DEFAULT 20, trial_ends TEXT,
-    marketing_consent INTEGER DEFAULT 1, email_verified INTEGER DEFAULT 0, bounced INTEGER DEFAULT 0,
-    created_at TEXT DEFAULT (datetime('now')), last_login TEXT
-  );
-  CREATE TABLE IF NOT EXISTS leads (
-    id TEXT PRIMARY KEY, customer_id TEXT NOT NULL, product TEXT NOT NULL, data TEXT NOT NULL,
-    status TEXT DEFAULT 'new', delivered INTEGER DEFAULT 0, delivered_at TEXT, created_at TEXT DEFAULT (datetime('now')),
-    FOREIGN KEY (customer_id) REFERENCES customers(id)
-  );
-  CREATE TABLE IF NOT EXISTS deliveries (
-    id TEXT PRIMARY KEY, customer_id TEXT NOT NULL, product TEXT NOT NULL, lead_count INTEGER DEFAULT 0,
-    email_status TEXT DEFAULT 'pending', email_id TEXT, error TEXT, delivered_at TEXT DEFAULT (datetime('now')),
-    FOREIGN KEY (customer_id) REFERENCES customers(id)
-  );
-  CREATE TABLE IF NOT EXISTS scraper_logs (
-    id TEXT PRIMARY KEY, product TEXT NOT NULL, customer_count INTEGER DEFAULT 0, leads_found INTEGER DEFAULT 0,
-    errors INTEGER DEFAULT 0, started_at TEXT, completed_at TEXT, status TEXT DEFAULT 'running'
-  );
-  CREATE TABLE IF NOT EXISTS subscriptions (
-    id TEXT PRIMARY KEY, customer_id TEXT NOT NULL UNIQUE, stripe_id TEXT, plan TEXT NOT NULL,
-    status TEXT DEFAULT 'active', current_period_start TEXT, current_period_end TEXT,
-    created_at TEXT DEFAULT (datetime('now')), FOREIGN KEY (customer_id) REFERENCES customers(id)
-  );
-`);
-console.log('Database ready at: ' + DB_PATH);
+function _exec(sql) {
+  // Used for CREATE TABLE statements
+  return { sql };
+}
+
+// Shims to match better-sqlite3 API
+const db_shim = {
+  prepare: (sql) => ({
+    run: (...p) => _run(sql, p),
+    get: (...p) => _get(sql, p),
+    all: (...p) => _all(sql, p),
+    raw: () => ({ all: (...p) => _all(sql, p).map(r => Object.values(r)) })
+  }),
+  exec: (sql) => _exec(sql),
+  pragma: () => {}
+};
+
+function _run(sql, params) {
+  const q = _q(sql, params);
+  if (q.isInsert) {
+    const row = {};
+    // Extract column names and values from INSERT INTO table (col1, col2) VALUES (v1, v2)
+    const colsMatch = sql.match(/\(([^)]+)\)\s*VALUES/i);
+    const valsMatch = sql.match(/VALUES\s*\(([^)]+)\)/i);
+    if (colsMatch && valsMatch) {
+      const cols = colsMatch[1].split(',').map(c => c.trim());
+      const vals = valsMatch[1].split(',').map(v => v.trim().replace(/'/g, ''));
+      cols.forEach((c, i) => { row[c] = params[i] !== undefined ? params[i] : vals[i]; });
+    }
+    if (row.id) db()[q.table].push(row);
+    save(); return { changes: 1 };
+  }
+  if (q.isUpdate) {
+    const setMatch = sql.match(/SET\s+(.+?)(?:\s+WHERE|$)/i);
+    const whereMatch = sql.match(/WHERE\s+(.+?)$/i);
+    if (setMatch) {
+      const sets = setMatch[1].split(',').map(s => {
+        const [k, v] = s.trim().split('=').map(x => x.trim());
+        return { key: k.replace(/['"]/g,''), val: v };
+      });
+      let idField = 'id', idVal = null;
+      if (whereMatch) {
+        const w = whereMatch[1].trim();
+        const wParts = w.split('=');
+        idField = wParts[0].trim();
+        idVal = wParts[1] ? wParts[1].replace(/'/g,'') : null;
+      }
+      idVal = idVal || params[params.length - 1];
+      const changes = {};
+      sets.forEach((s, i) => { changes[s.key] = s.val.replace(/\?/g, params[i]); });
+      const idx = db()[q.table].findIndex(r => r[idField] == idVal);
+      if (idx !== -1) { db()[q.table][idx] = { ...db()[q.table][idx], ...changes }; save(); return { changes: 1 }; }
+    }
+    return { changes: 0 };
+  }
+  return { changes: 0 };
+}
+
+function _get(sql, params) {
+  const q = _q(sql, params);
+  if (q.table && db()[q.table]) {
+    // Handle simple WHERE field = ? queries
+    const whereMatch = sql.match(/WHERE\s+(\w+)\s*=\s*\?/i);
+    const orderMatch = sql.match(/ORDER\s+BY\s+(\w+)\s+(DESC|ASC)/i);
+    let results = db()[q.table];
+    if (whereMatch) {
+      const field = whereMatch[1];
+      const val = params[0];
+      results = results.filter(r => r[field] == val);
+    }
+    if (orderMatch) {
+      const field = orderMatch[1];
+      const dir = orderMatch[2];
+      results.sort((a, b) => dir === 'DESC' ? (b[field]||'').localeCompare(a[field]||'') : (a[field]||'').localeCompare(b[field]||''));
+    }
+    // Handle COUNT(*)
+    if (sql.includes('COUNT(*)')) {
+      return { count: results.length };
+    }
+    // Handle LIMIT
+    const limitMatch = sql.match(/LIMIT\s+(\d+)/i);
+    if (limitMatch) results = results.slice(0, parseInt(limitMatch[1]));
+    return results[0] || null;
+  }
+  return null;
+}
+
+function _all(sql, params) {
+  const q = _q(sql, params);
+  if (q.table && db()[q.table]) {
+    let results = db()[q.table];
+    // Handle WHERE field = ?
+    const whereMatch = sql.match(/WHERE\s+(\w+)\s*=\s*\?/gi);
+    if (whereMatch) {
+      // Simple case: single WHERE
+      const w = sql.match(/WHERE\s+(\w+)\s*=\s*\?/i);
+      if (w) {
+        const field = w[1];
+        // Find which param index this corresponds to
+        const paramIdx = params.length > 1 ? 1 : 0;
+        if (paramIdx < params.length) results = results.filter(r => r[field] == params[paramIdx]);
+      }
+    }
+    // Handle AND conditions
+    if (sql.includes('AND')) {
+      const ands = sql.match(/(\w+)\s*=\s*\?/g);
+      if (ands) {
+        ands.forEach((a, i) => {
+          const field = a.split('=')[0].trim();
+          if (i < params.length) results = results.filter(r => r[field] == params[i]);
+        });
+      }
+    }
+    // Handle ORDER BY
+    const orderMatch = sql.match(/ORDER\s+BY\s+(\w+)\s+(DESC|ASC)/i);
+    if (orderMatch) {
+      const field = orderMatch[1];
+      const dir = orderMatch[2];
+      results.sort((a, b) => dir === 'DESC' ? (b[field]||'').localeCompare(a[field]||'') : (a[field]||'').localeCompare(b[field]||''));
+    }
+    // Handle LIMIT
+    const limitMatch = sql.match(/LIMIT\s+(\d+)/i);
+    if (limitMatch) results = results.slice(0, parseInt(limitMatch[1]));
+    // Handle OFFSET
+    const offsetMatch = sql.match(/OFFSET\s+(\d+)/i);
+    if (offsetMatch) results = results.slice(parseInt(offsetMatch[1]));
+    return results;
+  }
+  return [];
+}
+
+const db = db_shim;
+console.log('JSON database ready at: ' + DB_FILE);
 
 // ===== HELPERS =====
 function generateToken(customer) {
