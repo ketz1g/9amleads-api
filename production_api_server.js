@@ -32,80 +32,40 @@ const db = new Database(DB_PATH);
 db.pragma('journal_mode = WAL');
 db.pragma('foreign_keys = ON');
 
+function _q(sql, params) {
+  try { return db.prepare(sql); } catch(e) { console.error('DB Error:', e.message); return null; }
+}
+
 // Create tables
 db.exec(`
   CREATE TABLE IF NOT EXISTS customers (
-    id TEXT PRIMARY KEY,
-    email TEXT UNIQUE NOT NULL,
-    company TEXT NOT NULL,
-    contact_name TEXT,
-    phone TEXT,
-    password_hash TEXT NOT NULL,
-    product TEXT NOT NULL DEFAULT 'moving',
-    lead_type TEXT,
-    business_type TEXT,
-    target_areas TEXT DEFAULT '[]',
-    biz_field2 TEXT,
-    biz_field3 TEXT,
-    source TEXT DEFAULT 'direct',
-    plan TEXT DEFAULT 'free_trial',
-    leads_per_day INTEGER DEFAULT 20,
-    trial_ends TEXT,
-    marketing_consent INTEGER DEFAULT 1,
-    email_verified INTEGER DEFAULT 0,
-    bounced INTEGER DEFAULT 0,
-    created_at TEXT DEFAULT (datetime('now')),
-    last_login TEXT
+    id TEXT PRIMARY KEY, email TEXT UNIQUE NOT NULL, company TEXT NOT NULL, contact_name TEXT, phone TEXT,
+    password_hash TEXT NOT NULL, product TEXT NOT NULL DEFAULT 'moving', lead_type TEXT, business_type TEXT,
+    target_areas TEXT DEFAULT '[]', biz_field2 TEXT, biz_field3 TEXT, source TEXT DEFAULT 'direct',
+    plan TEXT DEFAULT 'free_trial', leads_per_day INTEGER DEFAULT 20, trial_ends TEXT,
+    marketing_consent INTEGER DEFAULT 1, email_verified INTEGER DEFAULT 0, bounced INTEGER DEFAULT 0,
+    created_at TEXT DEFAULT (datetime('now')), last_login TEXT
   );
-
   CREATE TABLE IF NOT EXISTS leads (
-    id TEXT PRIMARY KEY,
-    customer_id TEXT NOT NULL,
-    product TEXT NOT NULL,
-    data TEXT NOT NULL,
-    status TEXT DEFAULT 'new',
-    delivered INTEGER DEFAULT 0,
-    delivered_at TEXT,
-    created_at TEXT DEFAULT (datetime('now')),
+    id TEXT PRIMARY KEY, customer_id TEXT NOT NULL, product TEXT NOT NULL, data TEXT NOT NULL,
+    status TEXT DEFAULT 'new', delivered INTEGER DEFAULT 0, delivered_at TEXT, created_at TEXT DEFAULT (datetime('now')),
     FOREIGN KEY (customer_id) REFERENCES customers(id)
   );
-
   CREATE TABLE IF NOT EXISTS deliveries (
-    id TEXT PRIMARY KEY,
-    customer_id TEXT NOT NULL,
-    product TEXT NOT NULL,
-    lead_count INTEGER DEFAULT 0,
-    email_status TEXT DEFAULT 'pending',
-    email_id TEXT,
-    error TEXT,
-    delivered_at TEXT DEFAULT (datetime('now')),
+    id TEXT PRIMARY KEY, customer_id TEXT NOT NULL, product TEXT NOT NULL, lead_count INTEGER DEFAULT 0,
+    email_status TEXT DEFAULT 'pending', email_id TEXT, error TEXT, delivered_at TEXT DEFAULT (datetime('now')),
     FOREIGN KEY (customer_id) REFERENCES customers(id)
   );
-
   CREATE TABLE IF NOT EXISTS scraper_logs (
-    id TEXT PRIMARY KEY,
-    product TEXT NOT NULL,
-    customer_count INTEGER DEFAULT 0,
-    leads_found INTEGER DEFAULT 0,
-    errors INTEGER DEFAULT 0,
-    started_at TEXT,
-    completed_at TEXT,
-    status TEXT DEFAULT 'running'
+    id TEXT PRIMARY KEY, product TEXT NOT NULL, customer_count INTEGER DEFAULT 0, leads_found INTEGER DEFAULT 0,
+    errors INTEGER DEFAULT 0, started_at TEXT, completed_at TEXT, status TEXT DEFAULT 'running'
   );
-
   CREATE TABLE IF NOT EXISTS subscriptions (
-    id TEXT PRIMARY KEY,
-    customer_id TEXT NOT NULL UNIQUE,
-    stripe_id TEXT,
-    plan TEXT NOT NULL,
-    status TEXT DEFAULT 'active',
-    current_period_start TEXT,
-    current_period_end TEXT,
-    created_at TEXT DEFAULT (datetime('now')),
-    FOREIGN KEY (customer_id) REFERENCES customers(id)
+    id TEXT PRIMARY KEY, customer_id TEXT NOT NULL UNIQUE, stripe_id TEXT, plan TEXT NOT NULL,
+    status TEXT DEFAULT 'active', current_period_start TEXT, current_period_end TEXT,
+    created_at TEXT DEFAULT (datetime('now')), FOREIGN KEY (customer_id) REFERENCES customers(id)
   );
 `);
-
 console.log('Database ready at: ' + DB_PATH);
 
 // ===== HELPERS =====
