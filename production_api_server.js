@@ -7,7 +7,6 @@
  * Port: 8012
  */
 
-require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 const bcrypt = require('bcryptjs');
@@ -1238,7 +1237,7 @@ app.get('/api/health', (req, res) => {
     status: 'running',
     domain: 'www.9amleads.com',
     email: 'hello@9amleads.com',
-    database: DB_PATH,
+    database: DB_FILE,
     customers: customerCount.count,
     active_trials: activeTrials.count,
     expired_trials: expiredTrials.count,
@@ -1323,7 +1322,7 @@ app.get('/api/health', (req, res) => {
     status: 'running',
     domain: 'www.9amleads.com',
     email: 'hello@9amleads.com',
-    database: DB_PATH,
+    database: DB_FILE,
     customers: customerCount.count,
     leads: leadCount.count,
     brevo_configured: !!BREVO_API_KEY,
@@ -1338,7 +1337,7 @@ app.listen(PORT, () => {
   console.log('  Domain: www.9amleads.com');
   console.log('  Email: hello@9amleads.com');
   console.log('  Port: ' + PORT);
-  console.log('  Database: ' + DB_PATH);
+  console.log('  Database: ' + DB_FILE);
   console.log('  Brevo: ' + (BREVO_API_KEY ? 'CONFIGURED' : 'NOT SET'));
   console.log('  Scheduler: Active (8:30 AM daily)');
   console.log('========================================\n');
